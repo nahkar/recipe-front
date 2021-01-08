@@ -1,9 +1,22 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
 function App() {
-  return (
+  const [names, setName] = useState();
+  useEffect(() => {
+    axios.get(`https://jsonplaceholder.typicode.com/users`).then((res) => {
+      setName(res.data);
+    });
+  }, []);
+  console.log(names);
+  return names ? (
     <div>
-      <h1>Hello</h1>
+      <ul>
+        {names.map((name) => (
+          <li key={name.id}>{name.name}</li>
+        ))}
+      </ul>
     </div>
-  );
+  ) : null;
 }
 
 export default App;
