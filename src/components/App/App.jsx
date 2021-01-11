@@ -1,8 +1,9 @@
+import Routes from '../../routes/Routes';
 
 const App = () => {
   return (
     <div>
-      Hello
+      <Routes/>
     </div>
   )
 }
