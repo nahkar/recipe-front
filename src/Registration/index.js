@@ -1,9 +1,13 @@
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import RegistrationStyled from "./styled";
+import axios from "axios";
+import BASE_URL from "../utils/api";
 export default function Registration() {
   const { register, handleSubmit, errors, watch } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    axios.post(BASE_URL, { data });
+  };
   const password = useRef({});
   password.current = watch("password", "");
   console.log(password);
