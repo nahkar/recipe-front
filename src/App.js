@@ -1,5 +1,10 @@
+import Registration from "./Registration/index";
 function App() {
-  return <div></div>;
+  return (
+    <div>
+      <Registration />
+    </div>
+  );
 }
 
 export default App;
