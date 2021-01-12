@@ -1,15 +1,28 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserLogin } from '../../store/login/actions';
+
 import { useForm } from 'react-hook-form';
 
 import LoginStyled from './styled';
 
 const Login = () => {
 
-    const { register, handleSubmit, errors } = useForm();
+    const { data, loading } = useSelector(state => ({
+        data: state.login.data,
+        loading: state.login.isLoggedIn,
+    }))
+    console.log('DATA------>', data);
+    
+    const dispatch = useDispatch();
 
     const onSubmit = (data) => {
+        dispatch(getUserLogin(data));
         console.log(data);
     }
+    
+    const { register, handleSubmit, errors } = useForm();
 
     return (
         <LoginStyled.MainBg>
@@ -19,12 +32,12 @@ const Login = () => {
                 <LoginStyled.Label>Login</LoginStyled.Label>
                 <LoginStyled.Input
                     type="text"
-                    name="userEmail"
+                    name="email"
                     placeholder="Enter your email"
                     ref={register({ required: true, minLength: 5 })} />
                 
-                {errors.userEmail && errors.userEmail.type === 'required' && <LoginStyled.Error>This field is required</LoginStyled.Error>}
-                {errors.userEmail && errors.userEmail.type === 'minLength' && <LoginStyled.Error>This field is required minLength of 5 symbols</LoginStyled.Error>}
+                {errors.email && errors.email.type === 'required' && <LoginStyled.Error>This field is required</LoginStyled.Error>}
+                {errors.email && errors.email.type === 'minLength' && <LoginStyled.Error>This field is required minLength of 5 symbols</LoginStyled.Error>}
 
                 <LoginStyled.Label>Password</LoginStyled.Label>
                 <LoginStyled.Input
@@ -35,8 +48,6 @@ const Login = () => {
                 
                 {errors.password && errors.password.type === 'required' && <LoginStyled.Error>This field is required</LoginStyled.Error>}
                 {errors.password && errors.password.type === 'minLength' && <LoginStyled.Error>This field is required minLength of 5 symbols</LoginStyled.Error>}
-                
-
 
                 <LoginStyled.BtnSubmit type="submit" value="Enter"/>
             </LoginStyled.Form>

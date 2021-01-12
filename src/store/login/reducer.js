@@ -1,28 +1,34 @@
-import { LOGIN_SUCCESS, LOGIN_FAILED } from './constants';
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR } from './constants';
 
 const initialState = {
-    userEmail: '7@gmail.com',
-    password: 77777,
-    isLoggedIn: false,
-}
+  data: {},
+  isLoggedIn: false,
+};
 
 const loginReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case LOGIN_SUCCESS:
-            return {
-                ...state,
-                isLoggedIn: true,
-            };
-        case LOGIN_FAILED:
-            return {
-                ...state,
-                isLoggedIn: false,
-            };
-        default:
-            return {
-                ...state,
-            };
-    }
-}
+  const { type, payload } = action;
+  switch (type) {
+    case LOGIN_REQUEST:
+      return {
+        ...state,
+        isLoggedIn: true,
+      };
+    case LOGIN_ERROR:
+      return {
+        ...state,
+        isLoggedIn: false,
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        data: payload,
+        isLoggedIn: false,
+      };
+    default:
+      return {
+        ...state,
+      };
+  }
+};
 
 export default loginReducer;
