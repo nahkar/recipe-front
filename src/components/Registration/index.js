@@ -18,15 +18,16 @@ export default function Registration() {
       password: data.password,
     };
     console.log("============>>>>>>>>>>>>>>>>>>", postData);
-    dispatch(
-      (dispatch) => dispatch(postRequest()),
-      api.registration
-        .postRequest(postData)
-        .then((postData) => {
-          dispatch(postSuccess(postData));
-        })
-        .catch((err) => dispatch(postError(err)))
-    );
+    api.registration.postRequest(postData);
+    // dispatch(
+    //   (dispatch) => dispatch(postRequest()),
+    //   api.registration
+    //     .postRequest(postData)
+    //     .then((postData) => {
+    //       dispatch(postSuccess(postData));
+    //     })
+    //     .catch((err) => dispatch(postError(err)))
+    // );
   };
   const password = useRef({});
   password.current = watch("password", "");
