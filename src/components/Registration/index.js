@@ -1,18 +1,35 @@
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import RegistrationStyled from "./styled";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { POST_ERROR, POST_REQUEST, POST_SUCCESS } from "./constants";
-import api from "../utils/api";
+import { useDispatch } from "react-redux";
+import api from "../../utils/api";
+import {
+  postSuccess,
+  postRequest,
+  postError,
+} from "../../store/registration/action";
+
 export default function Registration() {
   const { register, handleSubmit, errors, watch } = useForm();
+  const dispatch = useDispatch();
   const onSubmit = (data) => {
-    api.registration.postRequest(data);
+    const postData = {
+      email: data.email,
+      password: data.password,
+    };
+    dispatch(
+      (dispatch) => dispatch(postRequest()),
+      api.registration
+        .postRequest(postData)
+        .then((postData) => {
+          dispatch(postSuccess(postData));
+        })
+        .catch((err) => dispatch(postError(err)))
+    );
   };
   const password = useRef({});
   password.current = watch("password", "");
-  console.log(password);
+
   return (
     <RegistrationStyled.WrapperForRegistration>
       <form onSubmit={handleSubmit(onSubmit)}>

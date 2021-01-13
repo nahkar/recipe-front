@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   registration: postReducer,
 });
 
-const enhacer = applyMiddleware(logger, thunk);
+const enhacer = applyMiddleware(thunk, logger);
 const store = createStore(rootReducer, enhacer);
 
 export default store;
