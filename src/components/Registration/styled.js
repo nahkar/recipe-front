@@ -1,12 +1,14 @@
 import styled from "styled-components";
-
+import img from "../../components/Login/img/login_bg.jpg";
 const WrapperForRegistration = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(233, 167, 106, 0.685);
+  background-image: url(${img});
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const WrapperForButton = styled.div`
