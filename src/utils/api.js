@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
 const api = {
     registration: {
     postRequest: (data) => axiosInstance.post(`/user`, data),
-  },  
+  },
     user: {
         getUser: (body) => {
             return axiosInstance.post(`/auth/login`, body).then(({data}) => {

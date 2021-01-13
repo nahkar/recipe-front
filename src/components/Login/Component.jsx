@@ -3,14 +3,15 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserLogin } from '../../store/login/actions';
 import { useForm } from 'react-hook-form';
+import { ToastContainer } from 'react-toastify';
 
 import LoginStyled from './styled';
 
+
 const Login = ({ history }) => {
 
-    const { data, isLoggedIn } = useSelector(state => ({
+    const { data } = useSelector(state => ({
         data: state.login.data,
-        isLoggedIn: state.login.isLoggedIn,
     }))
     
     const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const Login = ({ history }) => {
     return (
         <LoginStyled.MainBg>
             <LoginStyled.Form onSubmit={handleSubmit(onSubmit)}>
+                <ToastContainer />
                 <LoginStyled.Title>Entrance</LoginStyled.Title>
 
                 <LoginStyled.Label>Login</LoginStyled.Label>
