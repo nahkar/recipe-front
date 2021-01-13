@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 const BASE_URL = `https://stormy-badlands-73681.herokuapp.com`;
 
@@ -7,6 +7,9 @@ const axiosInstance = axios.create({
 });
 
 const api = {
+    registration: {
+    postRequest: (data) => axiosInstance.post(`/user`, data),
+  },  
     user: {
         getUser: (body) => {
             return axiosInstance.post(`/auth/login`, body).then(({data}) => {
