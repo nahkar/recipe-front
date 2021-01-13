@@ -4,16 +4,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserLogin } from '../../store/login/actions';
 import { useForm } from 'react-hook-form';
 import { ToastContainer } from 'react-toastify';
+import Animation from '../Animation/index';
 
 import LoginStyled from './styled';
 
 
 const Login = ({ history }) => {
 
-    const { data } = useSelector(state => ({
+    const { data, isLoading } = useSelector(state => ({
         data: state.login.data,
+        isLoading: state.login.isLoading,
     }))
     
+    console.log(isLoading);
+
     const dispatch = useDispatch();
 
     const onSubmit = (data) => {
@@ -50,6 +54,7 @@ const Login = ({ history }) => {
 
                 <LoginStyled.BtnSubmit type="submit" value="Enter"/>
             </LoginStyled.Form>
+            {isLoading && <Animation/>}
         </LoginStyled.MainBg>
     )
 }
