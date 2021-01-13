@@ -3,6 +3,7 @@ import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR } from './constants';
 const initialState = {
   data: {},
   isLoggedIn: false,
+  isLoading: false,
 };
 
 const loginReducer = (state = initialState, action) => {
@@ -11,18 +12,22 @@ const loginReducer = (state = initialState, action) => {
     case LOGIN_REQUEST:
       return {
         ...state,
-        isLoggedIn: true,
+        isLoggedIn: false,
+        isLoading: true,
       };
     case LOGIN_ERROR:
       return {
         ...state,
         isLoggedIn: false,
+        isLoading: false,
       };
     case LOGIN_SUCCESS:
+      console.log(payload);
       return {
         ...state,
         data: payload,
-        isLoggedIn: false,
+        isLoggedIn: true,
+        isLoading: false,
       };
     default:
       return {
