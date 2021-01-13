@@ -15,10 +15,16 @@ const getLoginError = () => ({
   type: LOGIN_ERROR,
 });
 
-export const getUserLogin = (data) => (dispatch) => {
+export const getUserLogin = (data, history) => (dispatch) => {
   dispatch(getLoginRequest());
-  api.user
+  return api.user
     .getUser(data)
-    .then((data) => dispatch(getLoginSuccess(data)))
-    .catch((err) => dispatch(getLoginError));
+    .then((data) => {
+      dispatch(getLoginSuccess(data));
+      history.push('/');
+    })
+    .catch((err) => {
+      dispatch(getLoginError)
+      throw err;
+    });
 };

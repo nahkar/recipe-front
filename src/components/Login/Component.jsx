@@ -2,24 +2,21 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserLogin } from '../../store/login/actions';
-
 import { useForm } from 'react-hook-form';
 
 import LoginStyled from './styled';
 
-const Login = () => {
+const Login = ({ history }) => {
 
-    const { data, loading } = useSelector(state => ({
+    const { data, isLoggedIn } = useSelector(state => ({
         data: state.login.data,
-        loading: state.login.isLoggedIn,
+        isLoggedIn: state.login.isLoggedIn,
     }))
-    console.log('DATA------>', data);
     
     const dispatch = useDispatch();
 
     const onSubmit = (data) => {
-        dispatch(getUserLogin(data));
-        console.log(data);
+        dispatch(getUserLogin(data, history));
     }
     
     const { register, handleSubmit, errors } = useForm();
