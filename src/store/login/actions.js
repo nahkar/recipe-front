@@ -1,6 +1,16 @@
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR } from './constants';
+import { toast } from 'react-toastify';
+
 import api from '../../utils/api';
 
+import 'react-toastify/dist/ReactToastify.css'; 
+
+const notify = () => {
+  toast.error('Wrong credentials!', {
+    position: toast.POSITION.TOP_CENTER,
+    autoClose: 2000,
+  });
+};
 
 const getLoginRequest = () => ({
   type: LOGIN_REQUEST,
@@ -25,6 +35,7 @@ export const getUserLogin = (data, history) => (dispatch) => {
     })
     .catch((err) => {
       dispatch(getLoginError)
+      notify();
       throw err;
     });
 };

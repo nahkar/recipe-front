@@ -3,13 +3,9 @@ import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import routes from '../../constants/routes';
 
-
 const PrivateRoute = ({ ...rest }) => {
 
     const isLoggedIn = useSelector(state => state.login.isLoggedIn);
-
-    console.log('isLoggedIn', isLoggedIn);
-
     return isLoggedIn ? <Route {...rest} /> : <Redirect to={ routes.login }/>
 }
 
