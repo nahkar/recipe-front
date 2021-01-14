@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-export default function Animation() {
+export default function Loader() {
   return (
     <div className="animation">
       <h1>Cooking in progress..</h1>

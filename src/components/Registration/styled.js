@@ -35,7 +35,7 @@ const Error = styled.div`
   color: red;
   font-size: 14px;
   margin-bottom: 5px;
-  background-color: rgb(255, 210, 86);
+  background-color: rgb(19, 29, 33);
   padding: 3px;
   opacity: 0.8;
   white-space: nowrap;
@@ -44,7 +44,7 @@ const Error = styled.div`
 const Input = styled.input`
   box-sizing: border-box;
   display: block;
-  width: 100%;
+  width: 380px;
   padding: 7px;
   border-radius: 5px;
   margin-bottom: 15px;

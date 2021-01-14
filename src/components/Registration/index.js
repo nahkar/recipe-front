@@ -2,15 +2,10 @@ import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import RegistrationStyled from "./styled";
 import { useDispatch, useSelector } from "react-redux";
-import api from "../../utils/api";
-import {
-  postSuccess,
-  postRequest,
-  postError,
-} from "../../store/registration/action";
-import Animation from "../Animation";
-import { ToastContainer, toast } from "react-toastify";
+import { createUser } from "../../store/registration/action";
+import Loader from "../animations/Loader";
 import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 export default function Registration({ history }) {
   const loading = useSelector((state) => state.registration.loading);
   const { register, handleSubmit, errors, watch } = useForm();
@@ -20,37 +15,15 @@ export default function Registration({ history }) {
       email: data.email,
       password: data.password,
     };
-    dispatch(
-      (dispatch) => dispatch(postRequest()),
-      api.registration
-        .postRequest(postData)
-        .then((postData) => {
-          dispatch(postSuccess(postData));
-          history.push("/login");
-        })
-        .catch((err) => {
-          dispatch(postError(err));
-          toast.error("You entered an incorrect or existing email");
-        })
-    );
+    dispatch(createUser(postData, history));
   };
   const password = useRef({});
   password.current = watch("password", "");
 
   return (
     <>
-      {loading && <Animation />}
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      {loading && <Loader />}
+      <ToastContainer />
       <RegistrationStyled.WrapperForRegistration>
         <form onSubmit={handleSubmit(onSubmit)}>
           <RegistrationStyled.Heading>Email</RegistrationStyled.Heading>
