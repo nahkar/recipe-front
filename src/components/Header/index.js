@@ -1,6 +1,9 @@
 import React from "react";
-import styles from "./style.module.scss";
+import classNames from "classnames";
 import img from "./img/processed.jpeg";
+import styles from "./style.module.scss";
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
     <div className={styles.wrapper_header}>
@@ -13,33 +16,42 @@ export default function Header() {
       </div>
       <hr />
       <div className={styles.header_navigation}>
-        <a className={styles.navigation_link} href="">
+        <Link
+          to="/recipes"
+          className={classNames(
+            styles.navigation_link,
+            styles.navigation_link_recipes
+          )}
+        >
           recipes
-        </a>
-        <a className={styles.navigation_link} href="">
-          tv shows
-        </a>
-        <a className={styles.navigation_link} href="">
+        </Link>
+        <Link to="/tv_show" className={classNames(styles.navigation_link)}>
+          tv show
+        </Link>
+        <Link to="/new_year" className={classNames(styles.navigation_link)}>
           new year
-        </a>
-        <a className={styles.navigation_link} href="">
+        </Link>
+        <Link
+          to="/cooking_school"
+          className={classNames(styles.navigation_link)}
+        >
           cooking school
-        </a>
-        <a className={styles.navigation_link} href="">
+        </Link>
+        <Link to="/shop" className={classNames(styles.navigation_link)}>
           shop
-        </a>
-        <a className={styles.navigation_link} href="">
+        </Link>
+        <Link to="/articles" className={classNames(styles.navigation_link)}>
           articles
-        </a>
-        <a className={styles.navigation_link} href="">
+        </Link>
+        <Link to="/contests" className={classNames(styles.navigation_link)}>
           contests
-        </a>
-        <a className={styles.navigation_link} href="">
+        </Link>
+        <Link to="/club" className={classNames(styles.navigation_link)}>
           club
-        </a>
-        <a className={styles.navigation_link} href="">
+        </Link>
+        <Link to="/more" className={classNames(styles.navigation_link)}>
           more
-        </a>
+        </Link>
       </div>
     </div>
   );
