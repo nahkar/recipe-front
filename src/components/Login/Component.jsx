@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserLogin } from '../../store/login/actions';
 import { useForm } from 'react-hook-form';
 import { ToastContainer } from 'react-toastify';
-import Animation from '../Animation/index';
+import Loader from '../animations/Loader';
 
 import LoginStyled from './styled';
 
@@ -54,7 +54,7 @@ const Login = ({ history }) => {
 
                 <LoginStyled.BtnSubmit type="submit" value="Enter"/>
             </LoginStyled.Form>
-            {isLoading && <Animation/>}
+            {isLoading && <Loader/>}
         </LoginStyled.MainBg>
     )
 }

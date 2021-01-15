@@ -3,6 +3,7 @@ const routes = {
   registration: "/registration",
   main: "/",
   notFound: "*",
+  header: "/header",
 };
 
 export default routes;
