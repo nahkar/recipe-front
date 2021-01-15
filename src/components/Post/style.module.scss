@@ -1,0 +1,42 @@
+.post {
+  width: 280px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5px);
+  transition: box-shadow 0.3s;
+}
+.post:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1px);
+}
+.post_information {
+  padding: 45px 20px 0 20px;
+}
+.post_author_wrapper {
+  display: flex;
+}
+.post_description {
+}
+.post_author_img {
+  border-radius: 100px;
+}
+.post_author_description {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+.post_author_name {
+  color: #242424;
+  font-size: 0.8125rem;
+  line-height: 0.8125rem;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.post_author_date {
+  color: #898989;
+  font-family: "Noto Serif";
+  font-size: 0.6875rem;
+  line-height: 0.8125rem;
+  font-style: italic;
+  padding-top: 5px;
+}
