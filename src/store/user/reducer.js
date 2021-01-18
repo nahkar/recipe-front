@@ -26,6 +26,7 @@ const userReducer = (state = initialState, action) => {
       };
     case LOGIN_ERROR:
     case REGISTR_ERROR:
+    case USER_LOGOUT:
       return {
         ...state,
         isLoggedIn: false,
@@ -39,12 +40,6 @@ const userReducer = (state = initialState, action) => {
         isLoggedIn: true,
         isLoading: false,
       };
-    case USER_LOGOUT:
-      return {
-        ...state,
-        isLoggedIn: false,
-        isLoading: false,
-      }
     default:
       return {
         ...state,

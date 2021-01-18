@@ -53,7 +53,7 @@ export const getUserLogin = (data, history) => (dispatch) => {
       notifySuccess('You have entered!');
     })
     .catch((err) => {
-      dispatch(getLoginError(err))
+      dispatch(getLoginError())
       notifyError('Wrong credentials!');
     });
 };
@@ -62,7 +62,7 @@ export const userLogOut = (history) => (dispatch) => {
   return api.user
     .logOut()
     .then((data) => {
-      dispatch(userLogout(data));
+      dispatch(userLogout());
       history.push(routes.login);
       notifySuccess('You have logged out!');
     })
@@ -79,7 +79,7 @@ export const userRegistration = (data, history) => (dispatch) => {
     notifySuccess('You have created new user')
   })
     .catch((err) => {
-      dispatch(registerError(err));
+      dispatch(registerError());
       notifyError('Wrong credentials!')
   })
 }
