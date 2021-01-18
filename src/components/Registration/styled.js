@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import img from "../../components/Login/img/login_bg.jpg";
+import img from "../../assets/img/login_bg.jpg";
+
 const WrapperForRegistration = styled.div`
   width: 100%;
   height: 100vh;
@@ -9,6 +10,22 @@ const WrapperForRegistration = styled.div`
   background-image: url(${img});
   background-repeat: no-repeat;
   background-size: cover;
+`;
+
+const Form = styled.form`
+  width: 380px;
+  box-sizing: border-box;
+  text-align: left;
+`;
+
+const Title = styled.p`
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 40px;
+  border-bottom: 1px solid grey;
+  font-size: calc(18px + 2vmin);
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
 `;
 
 const WrapperForButton = styled.div`
@@ -62,6 +79,7 @@ const BtnSubmit = styled.input`
   border-radius: 10px;
   width: 100%;
 `;
+
 export default {
   WrapperForRegistration,
   WrapperForButton,
@@ -69,4 +87,6 @@ export default {
   Error,
   Input,
   BtnSubmit,
+  Form,
+  Title,
 };

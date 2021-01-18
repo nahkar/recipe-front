@@ -1,15 +1,14 @@
 import { combineReducers, createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
-import loginReducer from "./login/reducer";
-import postReducer from "./registration/reducer";
+
+import userReducer from './user/reducer';
 
 const rootReducer = combineReducers({
-  login: loginReducer,
-  registration: postReducer,
+  user: userReducer,
 });
 
-const enhacer = applyMiddleware(thunk, logger);
+const enhacer = applyMiddleware(logger, thunk);
 const store = createStore(rootReducer, enhacer);
 
 export default store;

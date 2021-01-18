@@ -1,34 +1,50 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR } from './constants';
+import {
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
+  USER_LOGOUT,
+  REGISTR_REQUEST,
+  REGISTR_SUCCESS,
+  REGISTR_ERROR,
+} from './constants';
 
 const initialState = {
   data: {},
-  isLoggedIn: false,
+  isLoggedIn: !!localStorage.getItem('access_token'),
   isLoading: false,
 };
 
-const loginReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case LOGIN_REQUEST:
+    case REGISTR_REQUEST:
       return {
         ...state,
         isLoggedIn: false,
         isLoading: true,
       };
     case LOGIN_ERROR:
+    case REGISTR_ERROR:
       return {
         ...state,
         isLoggedIn: false,
         isLoading: false,
       };
     case LOGIN_SUCCESS:
-      console.log(payload);
+    case REGISTR_SUCCESS:
       return {
         ...state,
         data: payload,
         isLoggedIn: true,
         isLoading: false,
       };
+    case USER_LOGOUT:
+      return {
+        ...state,
+        isLoggedIn: false,
+        isLoading: false,
+      }
     default:
       return {
         ...state,
@@ -36,4 +52,4 @@ const loginReducer = (state = initialState, action) => {
   }
 };
 
-export default loginReducer;
+export default userReducer;
