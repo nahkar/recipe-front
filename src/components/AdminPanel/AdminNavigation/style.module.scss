@@ -1,0 +1,17 @@
+.admin_navigation {
+  display: flex;
+  flex-direction: column;
+  background-color: #06163a;
+  width: 15%;
+  height: 100vh;
+}
+
+.admin_navigation_link {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 23px;
+  padding: 5px 0 5px 20px;
+}
+.admin_navigation_home {
+  font-size: 35px;
+}

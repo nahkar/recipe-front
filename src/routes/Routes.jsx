@@ -6,6 +6,7 @@ import Login from '../components/Login';
 import PrivateRoute from '../components/PrivateRoute/index'
 import Registration from "../components/Registration/index"
 import Header from "../components/Header"
+import AdminPanel from "../components/AdminPanel"
 const Routes = () => {
     
     return (
@@ -14,6 +15,7 @@ const Routes = () => {
                 <Route path={routes.registration} component={ Registration }/>
                 <Route path={routes.login} component={Login} />
                 <Route path={routes.header} component={Header} />
+                <Route path={routes.adminpanel} component={AdminPanel} />
                 <PrivateRoute exact path={routes.main} component={ Main }/>
             </Switch>
         </BrowserRouter>

@@ -4,6 +4,7 @@ const routes = {
   main: "/",
   notFound: "*",
   header: "/header",
+  adminpanel: "/adminpanel",
 };
 
 export default routes;
