@@ -13,12 +13,6 @@ import LoginStyled from './styled';
 
 const Login = ({ history }) => {
 
-    const inputRef = useRef(null);
-
-    useEffect(() => {
-        inputRef.current.focus();
-    }, [])
-
     const { isLoading } = useSelector(state => ({
         data: state.user.data,
         isLoading: state.user.isLoading,
