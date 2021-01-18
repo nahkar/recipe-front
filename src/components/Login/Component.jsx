@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserLogin } from '../../store/user/actions';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 import Loader from '../animations/Loader';
 
 import routes from './../../constants/routes';
@@ -28,6 +27,7 @@ const Login = ({ history }) => {
     const dispatch = useDispatch();
 
     const onSubmit = (data) => {
+        console.log(data)
         dispatch(getUserLogin(data, history));
     }
     
@@ -37,12 +37,13 @@ const Login = ({ history }) => {
         <LoginStyled.MainBg>
             <LoginStyled.Form onSubmit={handleSubmit(onSubmit)}>
                 <LoginStyled.Title>Entrance</LoginStyled.Title>
+                
                 <LoginStyled.Label>Login</LoginStyled.Label>
                 <LoginStyled.Input
                     type="text"
                     name="email"
                     placeholder="Enter your email"
-                    ref={register({ required: true, minLength: 5 }), inputRef} />
+                    ref={register({ required: true, minLength: 5 })} />
                 
                 {errors.email && errors.email.type === 'required' && <LoginStyled.Error>This field is required</LoginStyled.Error>}
                 {errors.email && errors.email.type === 'minLength' && <LoginStyled.Error>This field is required minLength of 5 symbols</LoginStyled.Error>}

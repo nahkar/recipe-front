@@ -6,12 +6,6 @@ import LoginStyled from './styled.js';
 
 const ForgotPass = () => {
 
-    const inputRef = useRef(null);
-
-    useEffect(() => {
-        inputRef.current.focus();
-    }, []);
-
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = (data) => {
@@ -28,7 +22,7 @@ const ForgotPass = () => {
                     type="text"
                     name="email"
                     placeholder="Enter your email"
-                    ref={register({ required: true, minLength: 5 }), inputRef} />
+                    ref={register({ required: true, minLength: 5 })} />
                 
                 {errors.email && errors.email.type === 'required' && <LoginStyled.Error>This field is required</LoginStyled.Error>}
                 {errors.email && errors.email.type === 'minLength' && <LoginStyled.Error>This field is required minLength of 5 symbols</LoginStyled.Error>}
