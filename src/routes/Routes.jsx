@@ -1,13 +1,16 @@
 import React from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
-import routes from '../constants/routes';
+
+import PublicRoute from '../components/PublicRoute';
+import PrivateRoute from '../components/PrivateRoute';
+
 import Main from '../components/Main';
 import Login from '../components/Login';
-import PrivateRoute from '../components/PrivateRoute';
-import PublicRoute from '../components/PublicRoute';
 import Registration from "../components/Registration";
 import NotFound from '../components/NotFound';
 import ForgotPass from './../components/ForgotPass';
+
+import routes from '../constants/routes';
 
 const Routes = () => {
     

@@ -4,6 +4,7 @@ const routes = {
   forgotPass: "/forgotpass",
   main: "/",
   notFound: "*",
+  header: "/header",
 };
 
 export default routes;

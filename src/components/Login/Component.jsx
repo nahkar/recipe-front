@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserLogin } from '../../store/user/actions';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import Loader from '../animations/Loader';
 
 import routes from './../../constants/routes';
-import Loader from '../Loader/index';
 
 import LoginStyled from './styled';
 
