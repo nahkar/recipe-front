@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import img from '../../assets/img/login_bg.jpg';
+import img from '../../assets/img/forgot_bg.jpg';
 import { Link } from 'react-router-dom';
 
 const MainBg = styled.div`
@@ -19,16 +19,20 @@ const MainBg = styled.div`
 `;
 
 const Form = styled.form`
-  width: 380px;
+  width: 500px;
   box-sizing: border-box;
   text-align: left;
+  background-color: rgba(255, 139, 104, 0.699);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
 `;
 
 const Input = styled.input`
   box-sizing: border-box;
   display: block;
   width: 100%;
-  padding: 7px;
+  padding: 10px;
   border-radius: 5px;
   margin-bottom: 15px;
   border: none;
@@ -38,15 +42,21 @@ const Input = styled.input`
 const Title = styled.p`
   display: inline-block;
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   border-bottom: 1px solid grey;
-  font-size: calc(40px + 3vmin);
+  font-size: calc(10px + 2vmin);
+  text-align: center;
+  color: rgb(0, 70, 131);
+  font-weight: bold;
 `;
 
 const Label = styled.label`
+  font-family: Arial, Helvetica, sans-serif;
   display: inline-block;
-  font-size: calc(5px + 3vmin);
+  font-size: calc(3px + 2vmin);
   margin-bottom: 10px;
+  text-align: center;
+  color: #000;
 `;
 
 const BtnSubmit = styled.input`
@@ -73,21 +83,8 @@ const Error = styled.p`
   font-weight: bold;
 `;
 
-const LinkReg = styled.p`
-  font-size: 18px;
-  color: #fff;
-  text-decoration: underline;
-  text-align: center;
-`
-const LinkForgot = styled(LinkReg)`
-  border: 1px solid grey;
-  padding: 5px;
-  border-radius: 5px;
-  &:hover {
-    background-color: red;
-    transition: 2s; 
-  }
-`
+
+
 const StyledLink = styled(Link)`
   text-decoration: none;
 `;
@@ -100,7 +97,5 @@ export default {
   Label,
   BtnSubmit,
   Error,
-  LinkReg,
-  LinkForgot,
   StyledLink,
 };
