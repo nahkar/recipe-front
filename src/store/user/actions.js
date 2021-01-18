@@ -26,7 +26,7 @@ const getLoginError = () => ({
   type: LOGIN_ERROR,
 });
 
-const useLogout = () => ({
+const userLogout = () => ({
   type: USER_LOGOUT,
 })
 
@@ -48,26 +48,26 @@ export const getUserLogin = (data, history) => (dispatch) => {
   return api.user
     .login(data)
     .then((data) => {
-      dispatch(useLogout());
-      history.push(routes.login);
-      notifySuccess('You have logged out!');
+      dispatch(getLoginSuccess(data));
+      history.push(routes.main);
+      notifySuccess('You have entered!');
     })
     .catch((err) => {
-      notifyError('There are some problems!');
+      dispatch(getLoginError(err))
+      notifyError('Wrong credentials!');
     });
 };
 
-export const userLogOut = (data, history) => (dispatch) => {
-  dispatch(getLoginRequest());
+export const userLogOut = (history) => (dispatch) => {
   return api.user
     .logOut()
     .then((data) => {
-      dispatch(getLoginSuccess(data));
+      dispatch(userLogout(data));
       history.push(routes.login);
       notifySuccess('You have logged out!');
     })
     .catch((err) => {
-      dispatch(getLoginError(err));
+      console.log(err);
     });
 };
 
