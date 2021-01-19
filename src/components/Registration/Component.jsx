@@ -3,9 +3,8 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux'
 import { ToastContainer } from 'react-toastify';
 
-
 import { userRegistration } from '../../store/user/actions';
-import Loader from '../Loader/index';
+import Loader from '../Loader';
 
 import 'react-toastify/dist/ReactToastify.css';
 import RegistrationStyled from './styled';
