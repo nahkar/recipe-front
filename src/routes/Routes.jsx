@@ -12,7 +12,6 @@ import NotFound from '../components/NotFound';
 import ForgotPass from './../components/ForgotPass';
 
 import routes from '../constants/routes';
-
 const Routes = () => {
     
     return (
@@ -22,8 +21,8 @@ const Routes = () => {
                 <PublicRoute path={routes.login} component={Login} />
                 <PublicRoute path={routes.forgotPass} component={ForgotPass} />
                 <PrivateRoute exact path={routes.main} component={Main} />
+                <PublicRoute path={routes.adminpanel} component={AdminPanel} />
                 <PublicRoute path={routes.notFound} component={NotFound} />
-                <PrivateRoute path={routes.adminpanel} component={AdminPanel} />
                 
             </Switch>
         </BrowserRouter>
