@@ -14,7 +14,6 @@ const MainBg = styled.div`
   align-items: center;
   justify-content: center;
   color: white;
-  /* font-size: calc(10px + 3vmin); */
   font-family: 'Courier New', Courier, monospace;
 `;
 
@@ -76,18 +75,21 @@ const Error = styled.p`
 const LinkReg = styled.p`
   font-size: 18px;
   color: #fff;
-  text-decoration: underline;
   text-align: center;
-`
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 const LinkForgot = styled(LinkReg)`
   border: 1px solid grey;
   padding: 5px;
   border-radius: 5px;
   &:hover {
     background-color: red;
-    transition: 2s; 
+    transition: 2s;
   }
-`
+`;
 const StyledLink = styled(Link)`
   text-decoration: none;
 `;

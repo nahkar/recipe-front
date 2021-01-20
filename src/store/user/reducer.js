@@ -2,7 +2,9 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
-  USER_LOGOUT,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
+  LOGOUT_ERROR,
   REGISTR_REQUEST,
   REGISTR_SUCCESS,
   REGISTR_ERROR,
@@ -18,6 +20,7 @@ const userReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case LOGIN_REQUEST:
+    case LOGOUT_REQUEST:
     case REGISTR_REQUEST:
       return {
         ...state,
@@ -25,19 +28,29 @@ const userReducer = (state = initialState, action) => {
         isLoading: true,
       };
     case LOGIN_ERROR:
+    case LOGOUT_ERROR:
     case REGISTR_ERROR:
-    case USER_LOGOUT:
       return {
         ...state,
         isLoggedIn: false,
         isLoading: false,
       };
-    case LOGIN_SUCCESS:
     case REGISTR_SUCCESS:
       return {
         ...state,
         data: payload,
+        isLoading: false,
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        data: payload,
         isLoggedIn: true,
+        isLoading: false,
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        isLoggedIn: false,
         isLoading: false,
       };
     default:

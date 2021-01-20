@@ -6,7 +6,7 @@ import routes from '../../constants/routes';
 
 const PublicRoute = ({ ...rest }) => {
     const isLoggedIn = useSelector(state => state.user.isLoggedIn);
-
+    
     return isLoggedIn ? <Redirect to={routes.main} /> : <Route {...rest}/>
 }
 

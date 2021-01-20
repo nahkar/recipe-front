@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import img from '../../assets/img/forgot_bg.jpg';
-import { Link } from 'react-router-dom';
 
 const MainBg = styled.div`
   background-color: rgba(233, 167, 106, 0.685);
@@ -69,6 +68,7 @@ const BtnSubmit = styled.input`
   padding: 10px 20px;
   border-radius: 10px;
   width: 100%;
+  margin-bottom: 20px;
 `;
 
 const Error = styled.p`
@@ -83,11 +83,29 @@ const Error = styled.p`
   font-weight: bold;
 `;
 
-
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
+const LinkBlock = styled.div`
+  display: flex;
+  justify-content: space-around;
 `;
+
+const StyledLink = styled.span`
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px 10px;
+  &:hover {
+    background-color: #fff;
+    color: #911;
+    /* text-decoration: underline; */
+    transition: 0.5s;
+    border-radius: 5px;
+  }
+`;
+
+// const StyledLink = styled(Link)`
+//   font-size: 20px;
+// `;
 
 export default {
   MainBg,
@@ -98,4 +116,5 @@ export default {
   BtnSubmit,
   Error,
   StyledLink,
+  LinkBlock,
 };

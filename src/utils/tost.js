@@ -1,12 +1,5 @@
 import { toast } from 'react-toastify';
 
-const notify = () => {
-  toast.error('Wrong credentials!', {
-    position: toast.POSITION.TOP_CENTER,
-    autoClose: 2000,
-  });
-};
-
 export const notifyError = (
   text,
   autoClose = 2000,
@@ -28,5 +21,3 @@ export const notifySuccess = (
     autoClose,
   });
 };
-
-export default notify;

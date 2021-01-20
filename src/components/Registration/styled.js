@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import img from "../../assets/img/login_bg.jpg";
+import styled from 'styled-components';
+import img from '../../assets/img/login_bg.jpg';
 
 const WrapperForRegistration = styled.div`
   width: 100%;
@@ -10,6 +10,7 @@ const WrapperForRegistration = styled.div`
   background-image: url(${img});
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: 'Courier New', Courier, monospace;
 `;
 
 const Form = styled.form`
@@ -25,7 +26,7 @@ const Title = styled.p`
   border-bottom: 1px solid grey;
   font-size: calc(18px + 2vmin);
   color: #fff;
-  font-family: 'Courier New', Courier, monospace;
+  /* font-family: 'Courier New', Courier, monospace; */
 `;
 
 const WrapperForButton = styled.div`
@@ -40,7 +41,7 @@ const Heading = styled.p`
   display: inline-block;
   width: 100%;
   border-bottom: 1px solid grey;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   color: white;
   font-size: calc(5px + 3vmin);
   margin-bottom: 10px;
@@ -66,6 +67,7 @@ const Input = styled.input`
   border-radius: 5px;
   margin-bottom: 15px;
   border: none;
+  outline: none;
 `;
 
 const BtnSubmit = styled.input`
@@ -80,6 +82,15 @@ const BtnSubmit = styled.input`
   width: 100%;
 `;
 
+const LinkReg = styled.p`
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 export default {
   WrapperForRegistration,
   WrapperForButton,
@@ -89,4 +100,5 @@ export default {
   BtnSubmit,
   Form,
   Title,
+  LinkReg,
 };
