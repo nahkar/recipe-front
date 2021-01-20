@@ -5,9 +5,9 @@ import {
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   LOGOUT_ERROR,
-  REGISTR_REQUEST,
-  REGISTR_SUCCESS,
-  REGISTR_ERROR,
+  REGISTRATION_REQUEST,
+  REGISTRATION_SUCCESS,
+  REGISTRATION_ERROR,
 } from './constants';
 
 const initialState = {
@@ -21,7 +21,7 @@ const userReducer = (state = initialState, action) => {
   switch (type) {
     case LOGIN_REQUEST:
     case LOGOUT_REQUEST:
-    case REGISTR_REQUEST:
+    case REGISTRATION_REQUEST:
       return {
         ...state,
         isLoggedIn: false,
@@ -29,13 +29,13 @@ const userReducer = (state = initialState, action) => {
       };
     case LOGIN_ERROR:
     case LOGOUT_ERROR:
-    case REGISTR_ERROR:
+    case REGISTRATION_ERROR:
       return {
         ...state,
         isLoggedIn: false,
         isLoading: false,
       };
-    case REGISTR_SUCCESS:
+    case REGISTRATION_SUCCESS:
       return {
         ...state,
         data: payload,

@@ -5,9 +5,9 @@ import {
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   LOGOUT_ERROR,
-  REGISTR_REQUEST,
-  REGISTR_SUCCESS,
-  REGISTR_ERROR,
+  REGISTRATION_REQUEST,
+  REGISTRATION_SUCCESS,
+  REGISTRATION_ERROR,
 } from './constants';
 
 import routes from '../../constants/routes';
@@ -84,16 +84,16 @@ export const userLogOut = ({ history, refreshToken }) => (dispatch) => {
 };
 
 export const userRegistration = ({ registerData, history }) => (dispatch) => {
-  dispatch(registerRequest());
+  dispatch(registrationRequest());
   return api.user
     .createUser(registerData)
     .then((data) => {
-      dispatch(registerSuccess(data));
+      dispatch(registrationSuccess(data));
       history.push(routes.login);
       notifySuccess('You have created new user');
     })
     .catch((err) => {
-      dispatch(registerError());
+      dispatch(registrationError());
       notifyError('Wrong credentials!');
     });
 };
