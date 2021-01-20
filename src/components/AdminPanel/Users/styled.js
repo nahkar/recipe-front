@@ -33,8 +33,29 @@ const DeleteBtn = styled.button`
   background-color: #ff0000;
   color: #ffffff;
   border: none;
+  padding: 5px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  :active {
+    box-shadow: inset 0 0 3px #000000;
+  }
 `;
-
+const EditBtn = styled.button`
+  float: right;
+  background-color: #24d133;
+  color: #ffffff;
+  border: none;
+  padding: 5px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  :active {
+    box-shadow: inset 0 0 3px #000000;
+  }
+`;
 const Body = styled.tbody``;
 export default {
   Wrapper,
@@ -48,4 +69,5 @@ export default {
   UserImg,
   DeleteBtn,
   Body,
+  EditBtn,
 };

@@ -1,8 +1,9 @@
 import React from "react";
 import UsersTable from "./styled"
-export default function Users() {
+export default function Users(props) {
   return (
     <UsersTable.Wrapper>
+      
       <UsersTable.Table>
         <UsersTable.Body>
         <UsersTable.Header>
@@ -27,8 +28,9 @@ export default function Users() {
           <UsersTable.Content>Man</UsersTable.Content>
           <UsersTable.Content>25.05.1995</UsersTable.Content>
           <UsersTable.Content>Active user</UsersTable.Content>
-          <UsersTable.Content>
+            <UsersTable.Content>
             <UsersTable.DeleteBtn>Deleate</UsersTable.DeleteBtn>
+              <UsersTable.EditBtn onClick={() =>props.setShow(true)}>Edit</UsersTable.EditBtn>
           </UsersTable.Content>
         </UsersTable.List>
         </UsersTable.Body>

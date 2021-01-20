@@ -5,13 +5,16 @@ export default function AdminNavigation() {
     <AdminNav.Wrapper>
       <AdminNav.HomeLink
         to="#">
-        Admin panel
+        Admin
       </AdminNav.HomeLink>
       <AdminNav.BasicLink to="#">
         Users
       </AdminNav.BasicLink>
       <AdminNav.BasicLink to="#" >
-        Posts
+        Regipes
+      </AdminNav.BasicLink>
+      <AdminNav.BasicLink to="#" >
+        Categories
       </AdminNav.BasicLink>
     </AdminNav.Wrapper>
   );
