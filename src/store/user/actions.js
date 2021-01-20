@@ -3,15 +3,14 @@ import {
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   USER_LOGOUT,
-  REGISTR_REQUEST,
-  REGISTR_SUCCESS,
-  REGISTR_ERROR,
-} from './constants';
+  REGISTRATION_REQUEST,
+  REGISTRATION_SUCCESS,
+  REGISTRATION_ERROR,
+} from "./constants";
 
-import routes from '../../constants/routes';
-import { notifyError, notifySuccess } from './../../utils/tost';
-import api from '../../utils/api';
-
+import routes from "../../constants/routes";
+import { notifyError, notifySuccess } from "./../../utils/tost";
+import api from "../../utils/api";
 
 const getLoginRequest = () => ({
   type: LOGIN_REQUEST,
@@ -28,19 +27,19 @@ const getLoginError = () => ({
 
 const userLogout = () => ({
   type: USER_LOGOUT,
-})
-
-const registerRequest = () => ({
-  type: REGISTR_REQUEST,
 });
 
-const registerSuccess = (payload) => ({
-  type: REGISTR_SUCCESS,
+const registrationRequest = () => ({
+  type: REGISTRATION_REQUEST,
+});
+
+const registrationSuccess = (payload) => ({
+  type: REGISTRATION_SUCCESS,
   payload,
 });
 
-const registerError = () => ({
-  type: REGISTR_ERROR,
+const registrationError = () => ({
+  type: REGISTRATION_ERROR,
 });
 
 export const getUserLogin = (data, history) => (dispatch) => {
@@ -50,11 +49,11 @@ export const getUserLogin = (data, history) => (dispatch) => {
     .then((data) => {
       dispatch(getLoginSuccess(data));
       history.push(routes.main);
-      notifySuccess('You have entered!');
+      notifySuccess("You have entered!");
     })
     .catch((err) => {
-      dispatch(getLoginError())
-      notifyError('Wrong credentials!');
+      dispatch(getLoginError());
+      notifyError("Wrong credentials!");
     });
 };
 
@@ -65,7 +64,7 @@ export const userLogOut = (history) => (dispatch) => {
       dispatch(userLogout());
       localStorage.removeItem('refresh_token');
       history.push(routes.login);
-      notifySuccess('You have logged out!');
+      notifySuccess("You have logged out!");
     })
     .catch((err) => {
       console.log(err);
@@ -73,14 +72,16 @@ export const userLogOut = (history) => (dispatch) => {
 };
 
 export const userRegistration = (data, history) => (dispatch) => {
-  dispatch(registerRequest());
-  return api.user.createUser(data).then((data) => {
-    dispatch(registerSuccess(data));
-    history.push(routes.login);
-    notifySuccess('You have created new user')
-  })
+  dispatch(registrationRequest());
+  return api.user
+    .createUser(data)
+    .then((data) => {
+      dispatch(registrationSuccess(data));
+      history.push(routes.login);
+      notifySuccess("You have created new user");
+    })
     .catch((err) => {
-      dispatch(registerError());
-      notifyError('Wrong credentials!')
-  })
-}
+      dispatch(registrationError());
+      notifyError("Wrong credentials!");
+    });
+};
