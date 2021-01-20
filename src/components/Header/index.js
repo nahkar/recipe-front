@@ -1,8 +1,8 @@
-import React from "react";
-import classNames from "classnames";
-import img from "./img/processed.jpeg";
-import styles from "./style.module.scss";
-import { Link } from "react-router-dom";
+import React from 'react';
+import classNames from 'classnames';
+import img from '../../assets/img/processed';
+import styles from './style.module.scss';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
