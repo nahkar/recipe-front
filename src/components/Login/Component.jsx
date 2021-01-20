@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserLogin } from '../../store/user/actions';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import Loader from '../animations/Loader';
+import Loader from '../Loader';
 
 import routes from './../../constants/routes';
 
