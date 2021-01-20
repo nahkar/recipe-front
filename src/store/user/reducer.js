@@ -10,7 +10,7 @@ import {
 
 const initialState = {
   data: {},
-  isLoggedIn: !!localStorage.getItem("access_token"),
+  isLoggedIn: !!localStorage.getItem("refresh_token"),
   isLoading: false,
 };
 

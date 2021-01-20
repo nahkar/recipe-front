@@ -60,8 +60,9 @@ export const getUserLogin = (data, history) => (dispatch) => {
 export const userLogOut = (history) => (dispatch) => {
   return api.user
     .logOut()
-    .then((data) => {
+    .then(() => {
       dispatch(userLogout());
+      localStorage.removeItem('refresh_token');
       history.push(routes.login);
       notifySuccess("You have logged out!");
     })
