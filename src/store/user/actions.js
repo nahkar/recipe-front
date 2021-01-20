@@ -39,17 +39,17 @@ const logoutError = () => ({
   type: LOGOUT_ERROR,
 });
 
-const registerRequest = () => ({
-  type: REGISTR_REQUEST,
+const registrationRequest = () => ({
+  type: REGISTRATION_REQUEST,
 });
 
-const registerSuccess = (payload) => ({
-  type: REGISTR_SUCCESS,
+const registrationSuccess = (payload) => ({
+  type: REGISTRATION_SUCCESS,
   payload,
 });
 
-const registerError = () => ({
-  type: REGISTR_ERROR,
+const registrationError = () => ({
+  type: REGISTRATION_ERROR,
 });
 
 export const userLogin = ({ data, history }) => (dispatch) => {
