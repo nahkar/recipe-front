@@ -2,12 +2,14 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { userLogOut } from '../../store/user/actions';
 
-function Main() {
+function Main({history}) {
 
     const dispatch = useDispatch();
 
+    const logout = (refreshToken) => dispatch(userLogOut({ refreshToken, history }));
+
     const logOutHandler = () => {
-        dispatch(userLogOut());
+        logout(localStorage.getItem('refresh_token'));
     }
 
     return (

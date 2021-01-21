@@ -1,13 +1,14 @@
 import React, { useRef } from 'react';
-import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux'
-import { ToastContainer } from 'react-toastify';
 
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { userRegistration } from '../../store/user/actions';
-import Loader from '../Loader/index';
+import Loader from '../Loader';
+import routes from './../../constants/routes';
+import { MIN_LENGTH } from './../../constants/form';
 
-import 'react-toastify/dist/ReactToastify.css';
 import RegistrationStyled from './styled';
 
 export default function Registration({ history }) {
@@ -15,14 +16,17 @@ export default function Registration({ history }) {
   const loading = useSelector((state) => state.user.isLoading);
 
   const { register, handleSubmit, errors, watch } = useForm();
+
   const dispatch = useDispatch();
 
+  const registration = (registerData, history) => dispatch(userRegistration({registerData, history}));
+
   const onSubmit = (data) => {
-    const postData = {
+    const registerData = {
       email: data.email,
       password: data.password,
     };
-    dispatch(userRegistration(postData, history));
+    registration(registerData, history);
   };
 
   const password = useRef({});
@@ -31,27 +35,26 @@ export default function Registration({ history }) {
   return (
     <>
       {loading && <Loader />}
-      <ToastContainer />
         <RegistrationStyled.WrapperForRegistration>
           <RegistrationStyled.Form onSubmit={handleSubmit(onSubmit)}>
             <RegistrationStyled.Title>Register new user</RegistrationStyled.Title>
-            <RegistrationStyled.Heading>Email</RegistrationStyled.Heading>
+          <RegistrationStyled.Heading>Email</RegistrationStyled.Heading>
             <RegistrationStyled.Input
               type="text"
               name="email"
               id=""
-              ref={register({ required: true, minLength: 5, maxLength: 100 })}
+              ref={register({ required: true, minLength: MIN_LENGTH, maxLength: 100 })}
             />
 
-            {errors.email && (<RegistrationStyled.Error>Email must have at least 5 characters</RegistrationStyled.Error>
+            {errors.email && (<RegistrationStyled.Error>Email must have at least { MIN_LENGTH } characters</RegistrationStyled.Error>
             )}
             <RegistrationStyled.Heading>Password</RegistrationStyled.Heading>
             <RegistrationStyled.Input
               name="password"
               type="password"
               ref={register({ required: 'You must specify a password', minLength: {
-                value: 8,
-                message: 'Password must have at least 8 characters',
+                value: MIN_LENGTH,
+                message: `Password must have at least ${ MIN_LENGTH } characters`,
               },
             })}
             />
@@ -76,7 +79,13 @@ export default function Registration({ history }) {
           )}
             <RegistrationStyled.WrapperForButton>
             <RegistrationStyled.BtnSubmit type="submit" value="Create User" />
+            
           </RegistrationStyled.WrapperForButton>
+
+          <Link to={routes.login} style={{ textDecoration: 'none' }}>
+              <RegistrationStyled.LinkReg>If you have registered before, you can LOGIN</RegistrationStyled.LinkReg>
+          </Link>
+          
         </RegistrationStyled.Form>
       </RegistrationStyled.WrapperForRegistration>
     </>

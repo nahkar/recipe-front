@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import PublicRoute from '../components/PublicRoute';
 import PrivateRoute from '../components/PrivateRoute';
@@ -21,6 +21,7 @@ const Routes = () => {
                 <PublicRoute path={routes.login} component={Login} />
                 <PublicRoute path={routes.forgotPass} component={ForgotPass} />
                 <PrivateRoute exact path={routes.main} component={Main} />
+                <Route path={routes.notFound} component={ NotFound }/>
                 <PublicRoute path={routes.adminpanel} component={AdminPanel} />
                 <PublicRoute path={routes.notFound} component={NotFound} />
                 
