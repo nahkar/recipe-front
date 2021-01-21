@@ -5,9 +5,11 @@ import { useSelector } from 'react-redux';
 import routes from '../../constants/routes';
 
 const PublicRoute = ({ ...rest }) => {
-    const isLoggedIn = useSelector(state => state.user.isLoggedIn);
     
-    return isLoggedIn ? <Redirect to={routes.main} /> : <Route {...rest}/>
+    const { isLoggedIn } = useSelector(state => ({isLoggedIn: state.user.isLoggedIn }));
+    console.log('Logged Route',isLoggedIn);
+    
+    return isLoggedIn ? <Redirect to={routes.adminpanel} /> : <Route {...rest}/>
 }
 
 export default PublicRoute;

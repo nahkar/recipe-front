@@ -15,9 +15,9 @@ const NotFound = () => {
         <div>
             {isLoggedIn ? 
             
-            <Link to={ routes.main }>
+            <Link to={ '/adminpanel' }>
                 <NotFoundStyled.StyledLink>
-                        Main Page
+                        Admin Panel
                 </NotFoundStyled.StyledLink>
             </Link> :
             <Link to={ routes.login }>
