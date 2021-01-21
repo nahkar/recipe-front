@@ -20,11 +20,11 @@ const Routes = () => {
             <Switch>
                 <PublicRoute path={routes.registration} component={ Registration }/>
                 <PublicRoute path={routes.login} component={Login} />
-                <PrivateRoute path={routes.adminpanel} component={AdminPanel} />
                 <PublicRoute path={routes.forgotPass} component={ForgotPass} />
 
-                <Route exact path={routes.notFound} component={NotFound} />
 
+                <PrivateRoute exact path={routes.adminpanel} component={AdminPanel} />
+                <Route path={routes.notFound} component={NotFound} />
                 {/* <PrivateRoute exact path={routes.main} component={Main} /> */}
                 {/* <PublicRoute path={routes.notFound} component={NotFound} /> */}
                 

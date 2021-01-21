@@ -8,11 +8,15 @@ import {
   REGISTRATION_REQUEST,
   REGISTRATION_SUCCESS,
   REGISTRATION_ERROR,
-} from './constants';
+  USERS_REQUEST,
+  USERS_SUCCESS,
+  USERS_ERROR,
+} from "./constants";
 
 const initialState = {
+  users: [],
   data: {},
-  isLoggedIn: !!localStorage.getItem('refresh_token'),
+  isLoggedIn: !!localStorage.getItem("refresh_token"),
   isLoading: false,
 };
 
@@ -27,12 +31,22 @@ const userReducer = (state = initialState, action) => {
         isLoggedIn: false,
         isLoading: true,
       };
+    case USERS_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+      };
     case LOGIN_ERROR:
     case LOGOUT_ERROR:
     case REGISTRATION_ERROR:
       return {
         ...state,
         isLoggedIn: false,
+        isLoading: false,
+      };
+    case USERS_ERROR:
+      return {
+        ...state,
         isLoading: false,
       };
     case REGISTRATION_SUCCESS:
@@ -50,7 +64,14 @@ const userReducer = (state = initialState, action) => {
       };
     case LOGOUT_SUCCESS:
       return {
+        ...state,
         isLoggedIn: false,
+        isLoading: false,
+      };
+    case USERS_SUCCESS:
+      return {
+        ...state,
+        users: payload.data,
         isLoading: false,
       };
     default:

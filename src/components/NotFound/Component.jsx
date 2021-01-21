@@ -13,21 +13,17 @@ const NotFound = () => {
 
     return (
         <div>
-            {isLoggedIn ? 
             
-            <Link to={ '/adminpanel' }>
-                <NotFoundStyled.StyledLink>
+
+            <h1>Not Found go to {isLoggedIn ? 
+            
+            <Link to={ '/' }>
                         Admin Panel
-                </NotFoundStyled.StyledLink>
             </Link> :
             <Link to={ routes.login }>
-                <NotFoundStyled.StyledLink>
                         Login
-                </NotFoundStyled.StyledLink>
             </Link>
-            }
-
-            <h1>Not Found</h1>
+            }</h1>
         </div>
     )
 }
