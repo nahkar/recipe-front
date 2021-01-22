@@ -1,11 +1,10 @@
 const routes = {
   login: '/login',
   registration: '/registration',
-  forgotPass: '/forgotpass',
-  notFound: '*',
+  admin: '/',
+  forgotPass: '/forgot-password',
   header: '/header',
-  adminpanel: '/adminpanel',
-  // main: '/',
+  notFound: '*',
 };
 
 export default routes;

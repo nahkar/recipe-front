@@ -11,6 +11,7 @@ import {
 } from './constants';
 
 const initialState = {
+  userLogin: {},
   data: {},
   isLoggedIn: !!localStorage.getItem('refresh_token'),
   isLoading: false,
@@ -50,6 +51,7 @@ const userReducer = (state = initialState, action) => {
       };
     case LOGOUT_SUCCESS:
       return {
+        ...state,
         isLoggedIn: false,
         isLoading: false,
       };

@@ -107,7 +107,7 @@ const StyledLink = styled.span`
 //   font-size: 20px;
 // `;
 
-export default {
+const LoginStyled = {
   MainBg,
   Form,
   Input,
@@ -118,3 +118,5 @@ export default {
   StyledLink,
   LinkBlock,
 };
+
+export default LoginStyled;
