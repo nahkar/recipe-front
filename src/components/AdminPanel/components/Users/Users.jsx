@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../../store/user/actions";
+import { getUsers } from "../../../../store/user/actions";
 import UsersTable from "./styled";
 import moment from "moment";
-import Loader from "../../Loader"
+import Loader from "../../../Loader"
 
 export default function Users(props) {
   const { isLoading, users } = useSelector(state => ({
@@ -19,7 +19,7 @@ export default function Users(props) {
       {isLoading && <Loader/>}
     <UsersTable.Wrapper>
       
-      <UsersTable.Table>
+      <UsersTable.Table >
         <UsersTable.Body>
         <UsersTable.Header>
           <UsersTable.ColumnName>Number</UsersTable.ColumnName>
@@ -43,7 +43,10 @@ export default function Users(props) {
               </UsersTable.ContentName>
               <UsersTable.Content>{ user.role}</UsersTable.Content>
               <UsersTable.Content>{moment(user.createdAt).format("DD/MM/YYYY") }</UsersTable.Content>
-                
+              <UsersTable.Content>
+            <UsersTable.DeleteBtn>Deleate</UsersTable.DeleteBtn>
+              <UsersTable.EditBtn onClick={() =>props.setShow(true)}>Edit</UsersTable.EditBtn>
+          </UsersTable.Content>
             </UsersTable.List>)
           })}
         </UsersTable.Body>

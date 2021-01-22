@@ -15,7 +15,7 @@ import {
 
 const initialState = {
   users: [],
-  data: {},
+  email: "",
   isLoggedIn: !!localStorage.getItem("refresh_token"),
   isLoading: false,
 };
@@ -52,13 +52,12 @@ const userReducer = (state = initialState, action) => {
     case REGISTRATION_SUCCESS:
       return {
         ...state,
-        data: payload,
         isLoading: false,
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
-        data: payload,
+        email: payload,
         isLoggedIn: true,
         isLoading: false,
       };

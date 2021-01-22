@@ -21,7 +21,7 @@ const ContentName = styled.td`
   display: flex;
 `;
 
-const UserName = styled.p`
+const UserName = styled.span`
   padding-left: 10px;
 `;
 const UserImg = styled.img`
