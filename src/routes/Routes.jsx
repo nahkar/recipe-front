@@ -4,7 +4,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import PublicRoute from '../components/PublicRoute';
 import PrivateRoute from '../components/PrivateRoute';
 
-import Main from '../components/Main';
 import Login from '../components/Login';
 import Registration from "../components/Registration/index"
 import AdminPanel from "../components/AdminPanel"

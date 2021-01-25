@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from 'react-redux';
 
 import { userLogOut } from '../../store/user/actions';
+import AdminNavigation from "./components/AdminNavigation";
 
-import AdminPage from "./styled"
-import AdminNavigation from "./AdminNavigation";
-import Users from "./Users";
-import Edit from "./Users/Edit"
+import AdminPage from "./styled";
 
 export default function AdminPanel({history}) {
   
@@ -18,14 +16,10 @@ export default function AdminPanel({history}) {
         logout(localStorage.getItem('refresh_token'));
     }
 
-  const [show, setShow] = useState(false);
-
   return (
     <AdminPage.Wrapper>
       <AdminNavigation />
-      <Users setShow={setShow}/>
-      {show === true && <Edit setShow={setShow} />}
-      <button onClick={logOutHandler}>LogOut</button>
+      {/* <button onClick={logOutHandler}>LogOut</button> */}
     </AdminPage.Wrapper>
   );
 }
