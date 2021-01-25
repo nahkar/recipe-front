@@ -11,7 +11,7 @@ import {
   USERS_REQUEST,
   USERS_SUCCESS,
   USERS_ERROR,
-} from "./constants";
+} from './constants';
 
 import routes from "../../constants/routes";
 import { notifyError, notifySuccess } from "./../../utils/tost";
@@ -54,6 +54,7 @@ const registrationSuccess = (payload) => ({
 const registrationError = () => ({
   type: REGISTRATION_ERROR,
 });
+
 const usersRequest = () => ({
   type: USERS_REQUEST,
 });
@@ -112,12 +113,13 @@ export const userRegistration = ({ registerData, history }) => (dispatch) => {
       notifyError("Wrong credentials!");
     });
 };
+
 export const getUsers = () => (dispatch) => {
   dispatch(usersRequest());
   return api.user
     .getUsers()
-    .then((data) => {
-      dispatch(usersSuccess(data));
+    .then((response) => {
+      dispatch(usersSuccess(response.data));
     })
     .catch((err) => {
       dispatch(usersError());

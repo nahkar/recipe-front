@@ -94,7 +94,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-export default {
+const LoginStyled = {
   MainBg,
   Form,
   Input,
@@ -106,3 +106,5 @@ export default {
   LinkForgot,
   StyledLink,
 };
+
+export default LoginStyled;
