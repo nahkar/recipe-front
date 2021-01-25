@@ -6,7 +6,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   background-color: #06163a;
   width: 15%;
-  height: 100vh;
 `;
 const BasicLink = styled(Link)`
   text-decoration: none;

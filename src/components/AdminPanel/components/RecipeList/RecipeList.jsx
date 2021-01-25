@@ -15,7 +15,7 @@ const RecipeList = () => {
     }));
     const dispatch = useDispatch();
 
-    console.log(recipes);
+    // console.log(recipes);
 
     useEffect(() => {
         dispatch(getRecipes());

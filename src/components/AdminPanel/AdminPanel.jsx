@@ -1,25 +1,33 @@
 import React from "react";
 import { useDispatch } from 'react-redux';
 
-import { userLogOut } from '../../store/user/actions';
 import AdminNavigation from "./components/AdminNavigation";
+import AdminHeader from "./components/AdminHeader";
+
+import { userLogOut } from '../../store/user/actions';
 
 import AdminPage from "./styled";
 
-export default function AdminPanel({history}) {
-  
-  const dispatch = useDispatch();
+const AdminPanel = () => { 
 
-  const logout = (refreshToken) => dispatch(userLogOut({ refreshToken, history }));
-
-    const logOutHandler = () => {
-        logout(localStorage.getItem('refresh_token'));
-    }
+    // const logOutHandler = () => {
+    //     logout(localStorage.getItem('refresh_token'));
+    // }
 
   return (
-    <AdminPage.Wrapper>
-      <AdminNavigation />
-      {/* <button onClick={logOutHandler}>LogOut</button> */}
-    </AdminPage.Wrapper>
+    <>
+      <AdminHeader/>
+      <AdminPage.Wrapper>
+        <AdminNavigation />
+        {/* <button onClick={logOutHandler}>LogOut</button> */}
+        {/* <AdminPage.UserWrapper>
+          <AdminHeader/>
+        </AdminPage.UserWrapper> */}
+        {/* <AdminHeader/> */}
+      </AdminPage.Wrapper>
+    </>
+   
   );
 }
+
+export default AdminPanel;

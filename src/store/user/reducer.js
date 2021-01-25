@@ -17,12 +17,14 @@ const initialState = {
   users: [],
   user: {},
   data: {},
+  email: "",
   isLoggedIn: !!localStorage.getItem('refresh_token'),
   isLoading: false,
 };
 
 const userReducer = (state = initialState, action) => {
   const { type, payload } = action;
+  
   switch (type) {
     case LOGIN_REQUEST:
       return {
@@ -94,7 +96,6 @@ const userReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
       };
-
     default:
       return {
         ...state,

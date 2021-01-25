@@ -5,5 +5,9 @@ const Wrapper = styled.div`
   background-color: #ffffff;
   display: flex;
 `;
-
-export default { Wrapper };
+const UserWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+export default { Wrapper, UserWrapper };

@@ -13,9 +13,9 @@ import {
   USERS_ERROR,
 } from './constants';
 
-import routes from '../../constants/routes';
-import { notifyError, notifySuccess } from './../../utils/tost';
-import api from '../../utils/api';
+import routes from "../../constants/routes";
+import { notifyError, notifySuccess } from "./../../utils/tost";
+import api from "../../utils/api";
 
 const loginRequest = () => ({
   type: LOGIN_REQUEST,
@@ -75,11 +75,11 @@ export const userLogin = ({ data, history }) => (dispatch) => {
     .then((data) => {
       dispatch(loginSuccess(data));
       history.push(routes.main);
-      notifySuccess('You have entered!');
+      notifySuccess("You have entered!");
     })
     .catch((err) => {
       dispatch(loginError());
-      notifyError('Wrong credentials!');
+      notifyError("Wrong credentials!");
     });
 };
 
@@ -91,7 +91,7 @@ export const userLogOut = ({ history, refreshToken }) => (dispatch) => {
       dispatch(logoutSuccess());
       localStorage.clear();
       history.push(routes.login);
-      notifySuccess('You have logged out!');
+      notifySuccess("You have logged out!");
     })
     .catch((err) => {
       dispatch(logoutError());
@@ -106,11 +106,11 @@ export const userRegistration = ({ registerData, history }) => (dispatch) => {
     .then((data) => {
       dispatch(registrationSuccess(data));
       history.push(routes.login);
-      notifySuccess('You have created new user');
+      notifySuccess("You have created new user");
     })
     .catch((err) => {
       dispatch(registrationError());
-      notifyError('Wrong credentials!');
+      notifyError("Wrong credentials!");
     });
 };
 

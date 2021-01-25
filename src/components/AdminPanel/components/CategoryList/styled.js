@@ -7,6 +7,7 @@ const CategoryWrapper = styled.div`
   background-color: rgb(226, 231, 236);
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 `;
 
 const CategoryTopInfo = styled.div`
