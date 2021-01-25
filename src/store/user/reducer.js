@@ -26,6 +26,7 @@ const userReducer = (state = initialState, action) => {
   const { type, payload } = action;
   
   switch (type) {
+    
     case LOGIN_REQUEST:
       return {
         ...state,
@@ -47,15 +48,21 @@ const userReducer = (state = initialState, action) => {
       };
 
     case REGISTRATION_REQUEST:
+    case LOGOUT_REQUEST:
+    case USERS_REQUEST:
       return {
         ...state,
         isLoading: true,
       };
+
     case REGISTRATION_ERROR:
+    case LOGOUT_ERROR:
+    case USERS_ERROR:
       return {
         ...state,
         isLoading: false,
       };
+
     case REGISTRATION_SUCCESS:
       return {
         ...state,
@@ -63,16 +70,6 @@ const userReducer = (state = initialState, action) => {
         isLoading: false,
       };
 
-    case LOGOUT_REQUEST:
-      return {
-        ...state,
-        isLoading: true,
-      };
-    case LOGOUT_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-      };
     case LOGOUT_SUCCESS:
       return {
         ...state,
@@ -80,22 +77,13 @@ const userReducer = (state = initialState, action) => {
         isLoading: false,
       };
 
-    case USERS_REQUEST:
-      return {
-        ...state,
-        isLoading: true,
-      };
     case USERS_SUCCESS:
       return {
         ...state,
         users: payload,
         isLoading: false,
       };
-    case USERS_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-      };
+
     default:
       return {
         ...state,

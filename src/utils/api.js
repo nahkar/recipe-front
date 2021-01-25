@@ -14,7 +14,6 @@ const axiosInstance = axios.create({
 const api = {
   user: {
     createUser: (data) => axiosInstance.post(`/user`, data),
-    getUsers: () => axiosInstance.get(`/user`),
 
     getUsers: () => axiosInstance.get(`/user`),
 
