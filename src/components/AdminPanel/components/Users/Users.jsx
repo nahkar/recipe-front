@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../../../store/user/actions";
 import UsersTable from "./styled";
 import moment from "moment";
 import Loader from "../../../Loader"
-
+import Edit from "./components/Edit"
 export default function Users(props) {
+  const [show, setShow] = useState(false);
+
   const { isLoading, users } = useSelector(state => ({
     users: state.user.users,
     isLoading: state.user.isLoading,
@@ -16,6 +18,7 @@ export default function Users(props) {
   }, [])
   return (
     <>
+       {show === true && <Edit setShow={setShow} />}
       {isLoading && <Loader/>}
     <UsersTable.Wrapper>
       
@@ -45,7 +48,7 @@ export default function Users(props) {
               <UsersTable.Content>{moment(user.createdAt).format("DD/MM/YYYY") }</UsersTable.Content>
               <UsersTable.Content>
             <UsersTable.DeleteBtn>Deleate</UsersTable.DeleteBtn>
-              <UsersTable.EditBtn onClick={() =>props.setShow(true)}>Edit</UsersTable.EditBtn>
+              <UsersTable.EditBtn onClick={() =>setShow(true)}>Edit</UsersTable.EditBtn>
           </UsersTable.Content>
             </UsersTable.List>)
           })}
