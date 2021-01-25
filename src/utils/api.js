@@ -14,7 +14,12 @@ const axiosInstance = axios.create({
 const api = {
   user: {
     createUser: (data) => axiosInstance.post(`/user`, data),
+
     getUsers: () => axiosInstance.get(`/user`),
+
+    fetchCategories: () => axiosInstance.get(`/category`),
+
+    fetchRecipes: () => axiosInstance.get(`/recipe`),
 
     login: (body) => {
       return axiosInstance.post(`/auth/login`, body).then(({ data, body }) => {
@@ -31,6 +36,8 @@ const api = {
         refreshToken,
       });
     },
+
+    // getUserLogin: () => axiosInstance.post(``)
   },
 };
 

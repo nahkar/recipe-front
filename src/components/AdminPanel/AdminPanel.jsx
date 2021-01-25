@@ -1,17 +1,23 @@
 import React from "react";
-import AdminPage  from "./styled";
 import AdminNavigation from "./components/AdminNavigation";
-import Users from "./components/Users";
-import AdminHeader from "./components/AdminHeader"
-export default function AdminPanel() {
-  
+import AdminHeader from "./components/AdminHeader";
+import AdminPage from "./styled";
+
+const AdminPanel = () => { 
   return (
-    <AdminPage.Wrapper>
-      <AdminNavigation />
-      <AdminPage.UserWrapper>
+    <>
       <AdminHeader/>
-      <Users/>
-      </AdminPage.UserWrapper>
-    </AdminPage.Wrapper>
+      <AdminPage.Wrapper>
+        <AdminNavigation />
+        {/* <button onClick={logOutHandler}>LogOut</button> */}
+        {/* <AdminPage.UserWrapper>
+          <AdminHeader/>
+        </AdminPage.UserWrapper> */}
+        {/* <AdminHeader/> */}
+      </AdminPage.Wrapper>
+    </>
+   
   );
 }
+
+export default AdminPanel;

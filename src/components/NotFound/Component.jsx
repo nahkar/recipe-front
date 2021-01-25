@@ -12,19 +12,25 @@ const NotFound = () => {
     console.log(isLoggedIn);
 
     return (
-        <div>
-            
+        <NotFoundStyled.MainBg>
+            <NotFoundStyled.MainBlock>
+                <h2>Page Not Found</h2>
+                <p>
+                    Looks like you've followed a broken link or entered a URL that doesn't exist on this site.
+                </p>
 
-            <h1>Not Found go to {isLoggedIn ? 
+                {isLoggedIn ? 
             
-            <Link to={ '/' }>
-                        Admin Panel
-            </Link> :
-            <Link to={ routes.login }>
-                        Login
-            </Link>
-            }</h1>
-        </div>
+            <NotFoundStyled.StyledLink to={ routes.admin }>
+                        Back to Admin panel
+            </NotFoundStyled.StyledLink> :
+            <NotFoundStyled.StyledLink to={ routes.login }>
+                        Back to Login
+            </NotFoundStyled.StyledLink>
+                }
+                <hr/>
+            </NotFoundStyled.MainBlock>                     
+        </NotFoundStyled.MainBg>
     )
 }
 

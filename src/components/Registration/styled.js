@@ -91,7 +91,7 @@ const LinkReg = styled.p`
   }
 `;
 
-export default {
+const RegistrationStyled = {
   WrapperForRegistration,
   WrapperForButton,
   Heading,
@@ -102,3 +102,5 @@ export default {
   Title,
   LinkReg,
 };
+
+export default RegistrationStyled;
