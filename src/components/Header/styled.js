@@ -68,7 +68,7 @@ const RecipesLink = styled(Link)`
   text-transform: uppercase;
 `;
 
-export default {
+const Header = {
   Wrapper,
   LogoAndBtn,
   Logo,
@@ -80,3 +80,4 @@ export default {
   RecipesLink,
   BasicLink,
 };
+export default Header;
