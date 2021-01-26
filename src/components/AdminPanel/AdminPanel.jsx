@@ -2,18 +2,16 @@ import React from "react";
 import AdminNavigation from "./components/AdminNavigation";
 import AdminHeader from "./components/AdminHeader";
 import AdminPage from "./styled";
-
+import Content from "./components/content"
 const AdminPanel = () => { 
   return (
     <>
       <AdminHeader/>
       <AdminPage.Wrapper>
         <AdminNavigation />
-        {/* <button onClick={logOutHandler}>LogOut</button> */}
-        {/* <AdminPage.UserWrapper>
-          <AdminHeader/>
-        </AdminPage.UserWrapper> */}
-        {/* <AdminHeader/> */}
+        <AdminPage.UserWrapper>
+         <Content/>
+        </AdminPage.UserWrapper> 
       </AdminPage.Wrapper>
     </>
    

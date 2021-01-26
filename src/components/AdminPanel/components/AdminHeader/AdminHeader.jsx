@@ -3,6 +3,7 @@ import AdminHeader from "./styled"
 import { useDispatch } from 'react-redux';
 import { userLogOut } from '../../../../store/user/actions';
 import moment from "moment"
+import { imgForLogOutBtn } from "../../../../assets/img/img"
 export default function AdminHeaderComponent({ history }) {
     const [email, setEmail] = useState();
     useEffect(() => {
@@ -23,7 +24,10 @@ export default function AdminHeaderComponent({ history }) {
             <AdminHeader.Time>{moment().format('llll')}</AdminHeader.Time>
             <AdminHeader.LogoutWrapper>
                 <AdminHeader.Email>Hello, {email} </AdminHeader.Email>
-                <AdminHeader.LogoutBtn onClick={logOutHandler}>LogOut</AdminHeader.LogoutBtn>
+                <AdminHeader.LogoutBtn onClick={logOutHandler}>
+                    <AdminHeader.LogOutImg src={imgForLogOutBtn} width="20px"></AdminHeader.LogOutImg>
+                    <AdminHeader.LogOutBtnName>Logout</AdminHeader.LogOutBtnName>
+                    </AdminHeader.LogoutBtn>
             </AdminHeader.LogoutWrapper>
         </AdminHeader.Wrapper>
     )
