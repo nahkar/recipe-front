@@ -1,5 +1,4 @@
 import React from "react";
-import classNames from "classnames";
 import img from "./img/processed.jpeg";
 import Header from "./styled"
 

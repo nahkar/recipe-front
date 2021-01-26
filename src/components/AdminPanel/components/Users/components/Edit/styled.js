@@ -54,7 +54,7 @@ const BtnWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
-export default {
+const Edit = {
   Overlay,
   ModalWrapper,
   ChangeName,
@@ -64,3 +64,5 @@ export default {
   ChangeBtn,
   BtnWrapper,
 };
+
+export default Edit;

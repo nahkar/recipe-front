@@ -57,7 +57,7 @@ const EditBtn = styled.button`
   }
 `;
 const Body = styled.tbody``;
-export default {
+const UsersTable = {
   Wrapper,
   Table,
   ColumnName,
@@ -71,3 +71,4 @@ export default {
   Body,
   EditBtn,
 };
+export default UsersTable;

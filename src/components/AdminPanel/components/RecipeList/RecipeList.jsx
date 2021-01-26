@@ -9,7 +9,7 @@ import RecipeListStyled from './styled';
 
 const RecipeList = () => {
 
-    const { isLoading, recipes } = useSelector(state => ({
+    const { isLoading } = useSelector(state => ({
         recipes: state.category.recipes,
         isLoading: state.category.isLoading,
     }));
