@@ -5,7 +5,7 @@ import {
 } from './constants';
 
 const initialState = {
-  category: {},
+  category: [],
 };
 
 const categoryReducer = (state = initialState, action) => {

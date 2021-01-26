@@ -17,7 +17,7 @@ const Routes = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <PrivateRoute exact path={routes.admin} component={AdminPanel} />
+                <PrivateRoute path={routes.admin} component={AdminPanel} />
                 <PublicRoute path={routes.registration} component={ Registration }/>
                 <PublicRoute path={routes.login} component={Login} />
                 <PublicRoute path={routes.forgotPass} component={ForgotPass} />

@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../../../store/user/actions";
 import UsersTable from "./styled";
 import moment from "moment";
-import Loader from "../../../Loader"
-import Edit from "./components/Edit"
+import Loader from "../../../Loader";
+import Edit from "./components/Edit";
+
 export default function Users(props) {
+
   const [show, setShow] = useState(false);
 
   const { isLoading, users } = useSelector(state => ({

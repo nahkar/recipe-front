@@ -14,7 +14,7 @@ const CategoryList = () => {
     }));
     const dispatch = useDispatch();
 
-    console.log(category);
+    // console.log(category);
 
     useEffect(() => {
         dispatch(getCategories());
@@ -22,7 +22,7 @@ const CategoryList = () => {
 
     return (
         <>
-            {isLoading && <Loader/>}
+            {isLoading && <Loader />}
             <CategoryListStyled.CategoryWrapper>
                 <CategoryListStyled.CategoryTopInfo>
                     <CategoryListStyled.CategoryTopNumber>
@@ -36,7 +36,7 @@ const CategoryList = () => {
                     </CategoryListStyled.CategoryTopAction>
                 </CategoryListStyled.CategoryTopInfo>
 
-                {category.map((category, index) => {
+                 {category.map((category, index) => {
                     return (
                         <CategoryListStyled.CategoryList key={category.id}>
                             <CategoryListStyled.CategoryDataNumber>
