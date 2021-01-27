@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 const Overlay = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: rgb(0, 0, 0, 0.7);
   position: fixed;
+  top: 0;
+  left: 0;
 `;
 const ModalWrapper = styled.div`
   background-color: #ffffff;
@@ -13,6 +15,7 @@ const ModalWrapper = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  position: fixed;
 `;
 const ChangeName = styled.span`
   display: inline-block;

@@ -14,10 +14,10 @@ const AdminNavigation = () => {
         <AdminNav.BasicLink to={`${url}${routes.users}`}>
           Users
         </AdminNav.BasicLink>
-        <AdminNav.BasicLink to={`${url}${routes.categories}`} >
+        <AdminNav.BasicLink to={`${url}${routes.recipes}`} >
           Recipes
         </AdminNav.BasicLink>
-        <AdminNav.BasicLink to={`${url}${routes.recipes}`}>
+        <AdminNav.BasicLink to={`${url}${routes.categories}`}>
           Categories
         </AdminNav.BasicLink>
       </AdminNav.Wrapper>

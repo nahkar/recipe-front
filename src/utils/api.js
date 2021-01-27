@@ -14,7 +14,11 @@ const axiosInstance = axios.create({
 const api = {
   user: {
     createUser: (data) => axiosInstance.post(`/user`, data),
-
+    deleteUser: (id) => axiosInstance.delete(`/user/${id}`),
+    changeUser: (id, data) => (
+      console.log("AAAPPPPIIII","id=",id," data=", data),
+      axiosInstance.put(`/user/${id}`, data)
+    ),
     getUsers: () => axiosInstance.get(`/user`),
 
     fetchCategories: () => axiosInstance.get(`/category`),

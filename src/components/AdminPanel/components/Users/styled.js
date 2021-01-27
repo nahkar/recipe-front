@@ -5,7 +5,7 @@ const Wrapper = styled.div`
 const Table = styled.table`
   border-spacing: 0px;
   padding: 10px;
-  width: 100%;
+  // width: 100%;
 `;
 const Header = styled.tr`
   background-color: #cccccc;
@@ -15,14 +15,19 @@ const List = styled.tr``;
 const ColumnName = styled.th`
   padding: 10px;
   text-align: left;
+  width: 0;
 `;
-const Content = styled.td``;
+const Content = styled.td`
+
+`;
 const ContentName = styled.td`
   display: flex;
+
 `;
 
 const UserName = styled.span`
   padding-left: 10px;
+  align-self: center;
 `;
 const UserImg = styled.img`
   border-radius: 100%;
