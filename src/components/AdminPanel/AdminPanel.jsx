@@ -5,13 +5,14 @@ import AdminHeader from "./components/AdminHeader";
 
 import AdminPage from "./styled";
 
-const AdminPanel = () => { 
+const AdminPanel = ({children}) => { 
 
   return (
     <>
       <AdminHeader/>
       <AdminPage.Wrapper>
         <AdminNavigation />
+        {children}
       </AdminPage.Wrapper>
     </>
    

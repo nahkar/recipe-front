@@ -14,42 +14,48 @@ const CategoryList = () => {
     }));
     const dispatch = useDispatch();
 
-    // console.log(category);
-
     useEffect(() => {
         dispatch(getCategories());
     }, [])
 
     return (
         <>
-            {isLoading && <Loader />}
-            <CategoryListStyled.CategoryWrapper>
-                <CategoryListStyled.CategoryTopInfo>
-                    <CategoryListStyled.CategoryTopNumber>
-                        №
-                    </CategoryListStyled.CategoryTopNumber>
-                    <CategoryListStyled.CategoryTopName>
-                        Category
-                    </CategoryListStyled.CategoryTopName>
-                    <CategoryListStyled.CategoryTopAction>
-                        Action
-                    </CategoryListStyled.CategoryTopAction>
-                </CategoryListStyled.CategoryTopInfo>
+        {isLoading && <Loader />}
+        <UsersTable.Wrapper>
+      
+            <UsersTable.Table >
+                <UsersTable.Body>
+                    <UsersTable.Header>
+                        <UsersTable.ColumnName>Number</UsersTable.ColumnName>
+                        <UsersTable.ColumnName>Email</UsersTable.ColumnName>
+                        <UsersTable.ColumnName>Role</UsersTable.ColumnName>
+                        <UsersTable.ColumnName>Created At</UsersTable.ColumnName>
+                        <UsersTable.ColumnName></UsersTable.ColumnName>
+                    </UsersTable.Header>
 
-                 {category.map((category, index) => {
+                    {users.map((user, index) => {
                     return (
-                        <CategoryListStyled.CategoryList key={category.id}>
-                            <CategoryListStyled.CategoryDataNumber>
-                                {index + 1}
-                            </CategoryListStyled.CategoryDataNumber>
-                            <CategoryListStyled.CategoryDataName>
-                                {category.title}
-                            </CategoryListStyled.CategoryDataName>
-                        </CategoryListStyled.CategoryList>
-                        )
-                    })
-                }
-            </CategoryListStyled.CategoryWrapper>
+                        <UsersTable.List key={user.id}>
+                            <UsersTable.Content>{ index+1}</UsersTable.Content>
+                                <UsersTable.ContentName>
+                                    <UsersTable.UserImg
+                                    src="https://via.placeholder.com/40"
+                                    height="40px"
+                                    alt="#"
+                                    />
+                                    <UsersTable.UserName>{ user.email}</UsersTable.UserName>
+                                </UsersTable.ContentName>
+                                <UsersTable.Content>{ user.role}</UsersTable.Content>
+                                <UsersTable.Content></UsersTable.Content>
+                                <UsersTable.Content>
+                                <UsersTable.DeleteBtn>Deleate</UsersTable.DeleteBtn>
+                                <UsersTable.EditBtn onClick={() =>setShow(true)}>Edit</UsersTable.EditBtn>
+                            </UsersTable.Content>
+                        </UsersTable.List>)
+                    })}
+        </UsersTable.Body>
+      </UsersTable.Table>
+      </UsersTable.Wrapper>
         </>
     )
 }

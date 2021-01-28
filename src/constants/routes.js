@@ -6,6 +6,7 @@ const routes = {
   forgotPass: '/forgot-password',
   login: '/admin',
 
+  main: '/admin/main',
   dashboard: '/admin/dashboard',
   categories: '/admin/categories',
   recipes: '/admin/recipes',
