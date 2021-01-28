@@ -23,7 +23,7 @@ const api = {
 
     fetchCategories: () => axiosInstance.get(`/category`),
     createCategory: (data) => axiosInstance.post(`/category`, data),
-
+    createRecipe: (data) => axiosInstance.post(`/recipe`, data),
     fetchRecipes: () => axiosInstance.get(`/recipe`),
 
     login: (body) => {

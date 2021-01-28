@@ -3,6 +3,8 @@ import CreateCategory from "./styled"
 
 
 export default function Modalwindow(props) {
+    console.log(props.api);
+    console.log(props.dispatch);
     const createCategory = async (value) => {
         await props.api({ title: value });
         await props.setShow(false);
