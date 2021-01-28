@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../../../store/user/actions";
-import UsersTable from "./styled";
 import moment from "moment";
 import Loader from "../../../Loader";
+
+import UsersTable from "./styled";
 import Edit from "./components/Edit";
 
-export default function Users(props) {
+import api from "../../../../utils/api";
 
+export default function Users() {
   const [show, setShow] = useState(false);
-
+  const [user, setUser] = useState();
   const { isLoading, users } = useSelector(state => ({
     users: state.user.users,
     isLoading: state.user.isLoading,
@@ -18,9 +21,19 @@ export default function Users(props) {
   useEffect(() => {
     dispatch(getUsers())
   }, [])
+
+  const deleteId = async (id) => {
+   await api.user.deleteUser(id);
+    dispatch(getUsers());
+  }
+  const editUser = (user) => {
+    setShow(true);
+    setUser(user)
+  }
+  console.log(user);
   return (
     <>
-       {show === true && <Edit setShow={setShow} />}
+       {show === true && <Edit user={user} setShow={setShow} />}
       {isLoading && <Loader/>}
     <UsersTable.Wrapper>
       
@@ -49,8 +62,8 @@ export default function Users(props) {
               <UsersTable.Content>{ user.role}</UsersTable.Content>
               <UsersTable.Content>{moment(user.createdAt).format("DD/MM/YYYY") }</UsersTable.Content>
               <UsersTable.Content>
-            <UsersTable.DeleteBtn>Deleate</UsersTable.DeleteBtn>
-              <UsersTable.EditBtn onClick={() =>setShow(true)}>Edit</UsersTable.EditBtn>
+            <UsersTable.DeleteBtn onClick={() => deleteId(user.id)}>Deleate</UsersTable.DeleteBtn>
+              <UsersTable.EditBtn onClick={() => editUser(user)}>Edit</UsersTable.EditBtn>
           </UsersTable.Content>
             </UsersTable.List>)
           })}

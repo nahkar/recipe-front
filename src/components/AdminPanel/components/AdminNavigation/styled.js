@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   background-color: #06163a;
   width: 15%;
+  min-height: 100vh;
 `;
 const BasicLink = styled(Link)`
   text-decoration: none;
@@ -21,8 +22,9 @@ const HomeLink = styled(Link)`
   padding: 5px 0 5px 20px;
 `;
 
-export default {
+const AdminNav = {
   Wrapper,
   BasicLink,
   HomeLink,
 };
+export default AdminNav;

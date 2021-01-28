@@ -17,7 +17,6 @@ import Dashboard from './../components/AdminPanel/components/Dashboard/Dashboard
 import AdminPanel from './../components/AdminPanel';
 
 import routes from '../constants/routes';
-
 const Routes = () => {
     
     return (

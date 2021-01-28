@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getCategories } from '../../../../store/category/actions';
 import Loader from '../../../Loader';
+
+import AddBtn from "../AddCategoriesOrRecipes/AddBtn"
+import api from "../../../../utils/api"
 
 import CategoryStyled from './styled';
 
@@ -13,19 +16,20 @@ const CategoryList = () => {
         isLoading: state.category.isLoading,
     }));
 
-
     const dispatch = useDispatch();
-
+    
     useEffect(() => {
         dispatch(getCategories());
         console.log('Category', category);
     }, [])
 
+    
     return (
         <>
         {isLoading && <Loader />}
         
         <CategoryStyled.Wrapper>
+            <AddBtn api={api.user.createCategory} dispatch={() => dispatch(getCategories()) }/>
             <CategoryStyled.Table >
                 <CategoryStyled.Body>
                     <CategoryStyled.Header>
@@ -36,7 +40,8 @@ const CategoryList = () => {
                         <CategoryStyled.ColumnName></CategoryStyled.ColumnName>
                     </CategoryStyled.Header>
 
-                    {category.map((category, index) => {
+                {category.map((category, index) => {
+                        
                     return (
                         <CategoryStyled.List key={ category.id }>
                             <CategoryStyled.Content>{ index+1 }</CategoryStyled.Content>

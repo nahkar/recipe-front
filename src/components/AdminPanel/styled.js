@@ -10,4 +10,5 @@ const UserWrapper = styled.div`
   flex-direction: column;
   width: 100%;
 `;
-export default { Wrapper, UserWrapper };
+const AdminPage = { Wrapper, UserWrapper };
+export default AdminPage;

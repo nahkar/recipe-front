@@ -2,7 +2,7 @@ import {
   CATEGORY_REQUEST,
   CATEGORY_SUCCESS,
   CATEGORY_ERROR,
-} from './constants';
+} from "./constants";
 
 const initialState = {
   category: [],

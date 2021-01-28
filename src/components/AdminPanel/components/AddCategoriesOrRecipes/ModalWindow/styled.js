@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Overlay = styled.div`
   width: 100%;
@@ -17,16 +17,12 @@ const ModalWrapper = styled.div`
   transform: translate(-50%, -50%);
   position: fixed;
 `;
-const ChangeName = styled.span`
+const Category = styled.span`
   display: inline-block;
   padding: 10px;
   font-size: 20px;
 `;
-const ChangeRole = styled.select`
-  width: 200px;
-  margin-right: 10px;
-`;
-const Role = styled.option``;
+const WriteCategory = styled.input``;
 const CloseBtn = styled.button`
   background-color: #ff0000;
   color: #ffffff;
@@ -57,15 +53,14 @@ const BtnWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
-const Edit = {
+const CreateCategory = {
   Overlay,
   ModalWrapper,
-  ChangeName,
-  ChangeRole,
-  Role,
+  Category,
   CloseBtn,
   ChangeBtn,
   BtnWrapper,
+  WriteCategory,
 };
 
-export default Edit;
+export default CreateCategory;
