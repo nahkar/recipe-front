@@ -1,11 +1,12 @@
 import styled from "styled-components";
 const Wrapper = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 const Table = styled.table`
   border-spacing: 0px;
   padding: 10px;
-  // width: 100%;
 `;
 const Header = styled.tr`
   background-color: #cccccc;
@@ -17,12 +18,9 @@ const ColumnName = styled.th`
   text-align: left;
   width: 0;
 `;
-const Content = styled.td`
-
-`;
+const Content = styled.td``;
 const ContentName = styled.td`
   display: flex;
-
 `;
 
 const UserName = styled.span`
