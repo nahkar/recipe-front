@@ -20,7 +20,7 @@ const NotFound = () => {
 
                 {isLoggedIn ? 
             
-            <NotFoundStyled.StyledLink to={ routes.admin }>
+            <NotFoundStyled.StyledLink to={ routes.main }>
                         Back to Admin panel
             </NotFoundStyled.StyledLink> :
             <NotFoundStyled.StyledLink to={ routes.login }>

@@ -1,26 +1,27 @@
 import React from "react";
-import { useRouteMatch } from 'react-router-dom';
-import AdminNav from "./styled"
-import routes from "../../constants/routes"
-const AdminNavigation = () => {
-  const { url } = useRouteMatch();
-  return (
 
+import routes from '../../../../constants/routes';
+
+import AdminNav from "./styled";
+
+const AdminNavigation = () => {
+  return (
+  <>
       <AdminNav.Wrapper>
-        <AdminNav.HomeLink
-          to="/admin">
-          Admin
-        </AdminNav.HomeLink>
-        <AdminNav.BasicLink to={`${url}${routes.users}`}>
+        <AdminNav.BasicLink to={routes.dashboard}>
+          Dashboard
+        </AdminNav.BasicLink>
+        <AdminNav.BasicLink to={routes.users}>
           Users
         </AdminNav.BasicLink>
-        <AdminNav.BasicLink to={`${url}${routes.recipes}`} >
+        <AdminNav.BasicLink to={routes.recipes} >
           Recipes
         </AdminNav.BasicLink>
-        <AdminNav.BasicLink to={`${url}${routes.categories}`}>
+        <AdminNav.BasicLink to={ routes.categories}>
           Categories
         </AdminNav.BasicLink>
       </AdminNav.Wrapper>
+  </>
   );
 }
 
