@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getUsers } from './../../../../../../store/user/actions';
 import Loader from '../../../../../Loader';
 
-import UserListStyled from './styled';
+import UserStyled from './styled';
 
 const UserList = () => {
 
@@ -23,54 +23,37 @@ const UserList = () => {
     return (
         <>
             {isLoading && <Loader />}
-            <UserListStyled.UserWrapper>
-                <UserListStyled.UserTopInfo>
-                    <UserListStyled.UserTopNumber>
-                        №
-                    </UserListStyled.UserTopNumber>
-                    <UserListStyled.UserTopName>
-                        Email
-                    </UserListStyled.UserTopName>
-                    <UserListStyled.UserTopName>
-                        Role
-                    </UserListStyled.UserTopName>
-                    <UserListStyled.UserTopName>
-                        Created At
-                    </UserListStyled.UserTopName>
-                    <UserListStyled.UserTopAction>
-                        Action
-                    </UserListStyled.UserTopAction>
-                </UserListStyled.UserTopInfo>
+            <UserStyled.Wrapper>
+            <UserStyled.Table >
+                <UserStyled.Body>
+                    <UserStyled.Header>
+                        <UserStyled.ColumnName>Number</UserStyled.ColumnName>
+                        <UserStyled.ColumnName>Email</UserStyled.ColumnName>
+                        <UserStyled.ColumnName>Role</UserStyled.ColumnName>
+                        <UserStyled.ColumnName>Created At</UserStyled.ColumnName>
+                        <UserStyled.ColumnName></UserStyled.ColumnName>
+                    </UserStyled.Header>
 
-                 {users.map((user, index) => {
+                    {users.map((user, index) => {
                     return (
-                        <UserListStyled.UserList key={user.id}>
-                            <UserListStyled.UserDataNumber>
-                                {index + 1}
-                            </UserListStyled.UserDataNumber>
-                            <UserListStyled.UserDataName>
-                                {user.email}
-                            </UserListStyled.UserDataName>
-                            <UserListStyled.UserDataName>
-                                {user.role}
-                            </UserListStyled.UserDataName>
-                            <UserListStyled.UserDataName>
-                                {moment(user.createdAt).format('DD/MM/YYYY')}
-                            </UserListStyled.UserDataName>
-                            <UserListStyled.UserDataName>
-                                <UserListStyled.UserButtons color='rgb(255, 61, 61);'>
-                                    Remove
-                                </UserListStyled.UserButtons>
-                                <UserListStyled.UserButtons color='rgb(28, 146, 24);'>
-                                    Edit
-                                </UserListStyled.UserButtons>
-                            </UserListStyled.UserDataName>
-                            
-                        </UserListStyled.UserList>
-                        )
-                    })
-                }
-            </UserListStyled.UserWrapper>
+                        <UserStyled.List key={ user.id }>
+                            <UserStyled.ContentNumber>{ index+1 }</UserStyled.ContentNumber>
+                            <UserStyled.ContentName>
+                                <UserStyled.UserImg/>
+                                <UserStyled.UserName>{ user.email }</UserStyled.UserName>
+                            </UserStyled.ContentName>
+                        
+                            <UserStyled.Content>{ user.role }</UserStyled.Content>
+                            <UserStyled.Content>{ moment(user.createdAt).format('DD/MM/YYYY') }</UserStyled.Content>
+                            <UserStyled.Content>
+                                <UserStyled.DeleteBtn>Deleate</UserStyled.DeleteBtn>
+                                <UserStyled.EditBtn>Edit</UserStyled.EditBtn>
+                            </UserStyled.Content>
+                        </UserStyled.List>)
+                    })}
+        </UserStyled.Body>
+      </UserStyled.Table>
+      </UserStyled.Wrapper>
         </>
     )
 }

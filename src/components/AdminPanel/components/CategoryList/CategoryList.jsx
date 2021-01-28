@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getCategories } from '../../../../store/category/actions';
 import Loader from '../../../Loader';
 
-import CategoryListStyled from './styled';
+import CategoryStyled from './styled';
 
 const CategoryList = () => {
 
@@ -12,50 +12,49 @@ const CategoryList = () => {
         category: state.category.category,
         isLoading: state.category.isLoading,
     }));
+
+
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getCategories());
+        console.log('Category', category);
     }, [])
 
     return (
         <>
         {isLoading && <Loader />}
-        <UsersTable.Wrapper>
-      
-            <UsersTable.Table >
-                <UsersTable.Body>
-                    <UsersTable.Header>
-                        <UsersTable.ColumnName>Number</UsersTable.ColumnName>
-                        <UsersTable.ColumnName>Email</UsersTable.ColumnName>
-                        <UsersTable.ColumnName>Role</UsersTable.ColumnName>
-                        <UsersTable.ColumnName>Created At</UsersTable.ColumnName>
-                        <UsersTable.ColumnName></UsersTable.ColumnName>
-                    </UsersTable.Header>
+        
+        <CategoryStyled.Wrapper>
+            <CategoryStyled.Table >
+                <CategoryStyled.Body>
+                    <CategoryStyled.Header>
+                        <CategoryStyled.ColumnName>Number</CategoryStyled.ColumnName>
+                        <CategoryStyled.ColumnName>Category</CategoryStyled.ColumnName>
+                        <CategoryStyled.ColumnName></CategoryStyled.ColumnName>
+                        <CategoryStyled.ColumnName></CategoryStyled.ColumnName>
+                        <CategoryStyled.ColumnName></CategoryStyled.ColumnName>
+                    </CategoryStyled.Header>
 
-                    {users.map((user, index) => {
+                    {category.map((category, index) => {
                     return (
-                        <UsersTable.List key={user.id}>
-                            <UsersTable.Content>{ index+1}</UsersTable.Content>
-                                <UsersTable.ContentName>
-                                    <UsersTable.UserImg
-                                    src="https://via.placeholder.com/40"
-                                    height="40px"
-                                    alt="#"
-                                    />
-                                    <UsersTable.UserName>{ user.email}</UsersTable.UserName>
-                                </UsersTable.ContentName>
-                                <UsersTable.Content>{ user.role}</UsersTable.Content>
-                                <UsersTable.Content></UsersTable.Content>
-                                <UsersTable.Content>
-                                <UsersTable.DeleteBtn>Deleate</UsersTable.DeleteBtn>
-                                <UsersTable.EditBtn onClick={() =>setShow(true)}>Edit</UsersTable.EditBtn>
-                            </UsersTable.Content>
-                        </UsersTable.List>)
+                        <CategoryStyled.List key={ category.id }>
+                            <CategoryStyled.Content>{ index+1 }</CategoryStyled.Content>
+                                <CategoryStyled.ContentName>
+                                    <CategoryStyled.UserImg/>
+                                    <CategoryStyled.UserName>{ category.title}</CategoryStyled.UserName>
+                                </CategoryStyled.ContentName>
+                                <CategoryStyled.Content></CategoryStyled.Content>
+                                <CategoryStyled.Content></CategoryStyled.Content>
+                                <CategoryStyled.Content>
+                                <CategoryStyled.DeleteBtn>Deleate</CategoryStyled.DeleteBtn>
+                                <CategoryStyled.EditBtn>Edit</CategoryStyled.EditBtn>
+                            </CategoryStyled.Content>
+                        </CategoryStyled.List>)
                     })}
-        </UsersTable.Body>
-      </UsersTable.Table>
-      </UsersTable.Wrapper>
+        </CategoryStyled.Body>
+      </CategoryStyled.Table>
+      </CategoryStyled.Wrapper>
         </>
     )
 }

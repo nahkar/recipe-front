@@ -5,6 +5,7 @@ const HistoryWrapper = styled.div`
   width: 100%;
   padding: 12px;
   box-shadow: 0 -5px 10px rgba(119, 119, 119, 0.829);
+  margin-bottom: 20px;
 `;
 
 const HistoryTitle = styled.p`
