@@ -11,7 +11,7 @@ const AdminPanel = () => {
     <>
       <AdminHeader/>
       <AdminPage.Wrapper>
-        <AdminNavigation />        
+        <AdminNavigation />
       </AdminPage.Wrapper>
     </>
    

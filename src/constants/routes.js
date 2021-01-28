@@ -1,9 +1,15 @@
 const routes = {
-  login: '/login',
+  webHome: '/',
+  webRecipes: '/recipes',
+  webCategories: '/categories',
   registration: '/registration',
-  admin: '/admin',
   forgotPass: '/forgot-password',
-  header: '/header',
+  login: '/admin',
+
+  dashboard: '/admin/dashboard',
+  categories: '/admin/categories',
+  recipes: '/admin/recipes',
+  users: '/admin/users',
   notFound: '*',
 };
 

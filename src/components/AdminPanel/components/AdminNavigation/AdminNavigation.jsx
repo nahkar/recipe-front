@@ -6,36 +6,29 @@ import CategoryList from '../CategoryList';
 import RecipeList from '../RecipeList';
 import Dashboard from '../Dashboard';
 
-import routes from '../../constants/routes';
+import routes from '../../../../constants/routes';
 
 import AdminNav from "./styled";
 
 const AdminNavigation = () => {
-
   let { path, url } = useRouteMatch();
-  
+  console.log(url);
+
   return (
   <>
       <AdminNav.Wrapper>
-        <AdminNav.HomeLink
-          to={routes.admin}>
-          Admin
-        </AdminNav.HomeLink>
-        <AdminNav.BasicLink to={`${url}${routes.users}`}>
+        <AdminNav.BasicLink to={routes.users}>
           Users
         </AdminNav.BasicLink>
-        <AdminNav.BasicLink to={`${url}${routes.recipes}}`} >
+        <AdminNav.BasicLink to={routes.recipes} >
           Recipes
         </AdminNav.BasicLink>
-        <AdminNav.BasicLink to={`${url}${routes.categories}`}>
+        <AdminNav.BasicLink to={ routes.categories}>
           Categories
-        </AdminNav.BasicLink>
-        <AdminNav.BasicLink to={`${url}${routes.dashboard}`}>
-          Dashboard
         </AdminNav.BasicLink>
       </AdminNav.Wrapper>
 
-      <Switch>
+      {/* <Switch>
         <Route path={`${path}${routes.dashboard}`}>
           <Dashboard />
         </Route>
@@ -48,7 +41,7 @@ const AdminNavigation = () => {
         <Route path={`${path}${routes.recipes}}`}>
           <RecipeList />
         </Route>
-      </Switch>
+      </Switch> */}
   </>
   );
 }
