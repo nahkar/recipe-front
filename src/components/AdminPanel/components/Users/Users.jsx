@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../../../store/user/actions";
-import UsersTable from "./styled";
 import moment from "moment";
-import Loader from "../../../Loader"
-import Edit from "./components/Edit"
-import api from "../../../../utils/api"
+import Loader from "../../../Loader";
+
+import UsersTable from "./styled";
+import Edit from "./components/Edit";
+
+import api from "../../../../utils/api";
+
 export default function Users() {
   const [show, setShow] = useState(false);
   const [user, setUser] = useState();

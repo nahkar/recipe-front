@@ -14,7 +14,9 @@ export default function AdminHeaderComponent({ history }) {
 
     },[])
     const dispatch = useDispatch();
+    
     const logout = (refreshToken) => dispatch(userLogOut({ refreshToken, history }));
+
       const logOutHandler = () => {
           logout(localStorage.getItem('refresh_token'));
     }
