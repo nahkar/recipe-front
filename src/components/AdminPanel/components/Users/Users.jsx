@@ -16,21 +16,25 @@ export default function Users() {
   const { isLoading, users } = useSelector(state => ({
     users: state.user.users,
     isLoading: state.user.isLoading,
-}))
+  }))
+  
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(getUsers())
-  }, [])
+    const getUsersList = () => dispatch(getUsers());
+    getUsersList();
+  }, [dispatch]);
 
   const deleteId = async (id) => {
-   await api.user.deleteUser(id);
+    await api.user.deleteUser(id);
     dispatch(getUsers());
-  }
+  };
+
   const editUser = (user) => {
     setShow(true);
     setUser(user)
-  }
-  console.log(user);
+  };
+
   return (
     <>
        {show === true && <Edit user={user} setShow={setShow} />}

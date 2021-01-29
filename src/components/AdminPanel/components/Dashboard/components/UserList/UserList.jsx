@@ -14,11 +14,14 @@ const UserList = () => {
         users: state.user.users,
         isLoading: state.user.isLoading,
     }));
+
     const dispatch = useDispatch();
 
+    
     useEffect(() => {
-        dispatch(getUsers());
-    }, [])
+        const getUsersData = () => dispatch(getUsers());
+        getUsersData();
+    }, [dispatch])
 
     return (
         <>

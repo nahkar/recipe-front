@@ -14,13 +14,14 @@ const RecipeList = () => {
         recipes: state.category.recipes,
         isLoading: state.category.isLoading,
     }));
+
     const dispatch = useDispatch();
 
-    // console.log(recipes);
-
+    
     useEffect(() => {
-        dispatch(getRecipes());
-    }, [])
+        const getRecipesData = () => dispatch(getRecipes());
+        getRecipesData();
+    }, [dispatch])
 
     return (
         <>

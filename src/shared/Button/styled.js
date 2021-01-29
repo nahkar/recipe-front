@@ -16,6 +16,8 @@ const BtnSubmit = styled.button`
   margin-bottom: 10px;
 `;
 
-export default {
+const ButtonLog = {
   BtnSubmit,
 };
+
+export default ButtonLog;
