@@ -1,16 +1,23 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
   padding: 20px;
   font-size: 18px;
   background-color: #ccc;
 `;
-
+// const ButtonTableWrapper = styled.div``;
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
 const Table = styled.table`
+  align-self: center;
+  width: 500px;
   border-spacing: 0px;
   padding: 10px;
-  width: 100%;
   background-color: #fff;
   box-shadow: 0 -5px 10px rgba(119, 119, 119, 0.829);
 `;
@@ -90,6 +97,8 @@ const CategoryStyled = {
   DeleteBtn,
   EditBtn,
   Body,
+  // ButtonTableWrapper,
+  ButtonWrapper,
 };
 
 export default CategoryStyled;

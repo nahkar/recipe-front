@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  width: 100%;
+  /* width: 100%;
+   */
+  min-width: 650px;
   background-color: #ffffff;
   display: flex;
 `;
-const UserWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`;
-const AdminPage = { Wrapper, UserWrapper };
+
+const AdminPage = { Wrapper };
 export default AdminPage;
