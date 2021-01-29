@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import routes from '../constants/routes';
 
@@ -14,7 +14,7 @@ import AdminPanel from './../components/AdminPanel';
 
 const RoutesAdmin = () => {
     return (
-        <Switch>
+        <>
             <PrivateRoute exact path={routes.main} component={AdminPanel} />
             <Route exact path={routes.dashboard} component={ () => (
                 <AdminPanel>
@@ -36,7 +36,7 @@ const RoutesAdmin = () => {
                     <RecipeList/>
                 </AdminPanel>
             )}/>
-        </Switch>
+        </>
     )
 }
 
