@@ -17,12 +17,12 @@ const CategoryList = () => {
     }));
 
     const dispatch = useDispatch();
+
     
     useEffect(() => {
-        dispatch(getCategories());
-        console.log('Category', category);
-    }, [])
-
+        const getCategory = () => dispatch(getCategories());
+        getCategory();
+    }, [dispatch])
     
     return (
         <>
