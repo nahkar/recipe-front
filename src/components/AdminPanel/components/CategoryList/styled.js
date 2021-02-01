@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
+const LinkButton = styled(Link)``;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -99,6 +101,7 @@ const CategoryStyled = {
   Body,
   // ButtonTableWrapper,
   ButtonWrapper,
+  LinkButton,
 };
 
 export default CategoryStyled;

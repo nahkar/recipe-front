@@ -8,8 +8,10 @@ import api from "../../../../utils/api"
 
 import CategoryStyled from './styled';
 import Button from "../Button"
-const CategoryList = (history) => {
-
+import routes from "../../../../constants/routes"
+import CreateCategory from "../CreateCategory"
+const CategoryList = ({history}) => {
+    // const [id, setId] = useState();
     const { isLoading, category } = useSelector(state => ({
         category: state.category.category,
         isLoading: state.category.isLoading,
@@ -29,13 +31,18 @@ const CategoryList = (history) => {
         dispatch(getCategories());
     }
 
+    const editCategory =(id) => {
+        history.push(routes.categoriesCreature)
+    }
     
     return (
         <>
         {isLoading && <Loader />}
             <CategoryStyled.Wrapper>
                     <CategoryStyled.ButtonWrapper>
-                    <Button title="Add category" color="#24d133" onClick={() => history.push("/admin/categories/creature")}/>
+                    <CategoryStyled.LinkButton to={routes.categoriesCreature}>
+                             <Button title="Add category" color="#24d133" />
+                    </CategoryStyled.LinkButton>
                     </CategoryStyled.ButtonWrapper>
             <CategoryStyled.Table >
                 <CategoryStyled.Body>
@@ -55,7 +62,7 @@ const CategoryList = (history) => {
                                     <CategoryStyled.UserName>{ category.title}</CategoryStyled.UserName>
                                 </CategoryStyled.ContentName>
                                 <CategoryStyled.Content>
-                               <Button title="Edit" color="#24d133"/>
+                                <Button title="Edit" color="#24d133" onClick={ () =>  setId(category.id)}/>
                                <Button title="Delete" color="#ff0000" onClick={()=> deleteCategory(category.id)}/>
                             </CategoryStyled.Content>
                         </CategoryStyled.List>)

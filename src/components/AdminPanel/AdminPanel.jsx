@@ -5,8 +5,7 @@ import AdminHeader from "./components/AdminHeader";
 
 import AdminPage from "./styled";
 
-const AdminPanel = ({children}) => { 
-
+const AdminPanel = ({ children }) => { 
   return (
     <>
       <AdminHeader/>

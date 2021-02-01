@@ -17,7 +17,7 @@ const AdminNavigation = () => {
         <AdminNav.BasicLink to={routes.recipes} >
           Recipes
         </AdminNav.BasicLink>
-        <AdminNav.BasicLink to={ routes.categories}>
+        <AdminNav.BasicLink to={routes.categories}>
           Categories
         </AdminNav.BasicLink>
       </AdminNav.Wrapper>

@@ -15,10 +15,11 @@ import CategoryList from './../components/AdminPanel/components/CategoryList/Cat
 import RecipeList from './../components/AdminPanel/components/RecipeList/RecipeList';
 import Dashboard from './../components/AdminPanel/components/Dashboard/Dashboard';
 import AdminPanel from './../components/AdminPanel';
-
+import CreateCategory from "../components/AdminPanel/components/CreateCategory"
 import routes from '../constants/routes';
+
 const Routes = () => {
-    
+
     return (
         <BrowserRouter>
             
@@ -42,11 +43,17 @@ const Routes = () => {
                     </AdminPanel>
                 )} />
                 
-                <PrivateRoute path={routes.categories} component={() => (
+                <PrivateRoute exact path={routes.categories} component={({history}) => (
                     <AdminPanel>
-                        <CategoryList/>
+                        <CategoryList history={ history}/>
                     </AdminPanel>
                 )} />
+
+                   <PrivateRoute path={routes.categoriesCreature} component={({history}) => (
+                    <AdminPanel>
+                        <CreateCategory history={ history}/>
+                    </AdminPanel>
+                )}/>
                 
                 <PrivateRoute path={routes.recipes} component={() => (
                     <AdminPanel>
