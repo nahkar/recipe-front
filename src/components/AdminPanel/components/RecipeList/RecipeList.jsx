@@ -6,8 +6,6 @@ import Loader from '../../../Loader';
 
 import RecipeListStyled from './styled';
 
-import AddBtn from "../AddCategoriesOrRecipes/AddBtn";
-import api from "../../../../utils/api"
 const RecipeList = () => {
 
     const { isLoading } = useSelector(state => ({
@@ -27,7 +25,6 @@ const RecipeList = () => {
         <>
             {isLoading && <Loader/>}
             <RecipeListStyled.RecipeWrapper>
-            <AddBtn api={api.user.createRecipe} dispatch={() => dispatch(getRecipes()) }/>
                 <RecipeListStyled.RecipeTopInfo>
                     <RecipeListStyled.RecipeTopNumber>
                         №
