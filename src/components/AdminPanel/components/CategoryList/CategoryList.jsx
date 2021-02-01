@@ -8,7 +8,7 @@ import api from "../../../../utils/api"
 
 import CategoryStyled from './styled';
 import Button from "../Button"
-const CategoryList = () => {
+const CategoryList = (history) => {
 
     const { isLoading, category } = useSelector(state => ({
         category: state.category.category,
@@ -24,15 +24,16 @@ const CategoryList = () => {
 
     const deleteCategory = async(id) => {
         await api.user.deleteCategory(id);
+        dispatch(getCategories());
+        
     }
+
     return (
         <>
         {isLoading && <Loader />}
             <CategoryStyled.Wrapper>
-                    
                     <CategoryStyled.ButtonWrapper>
-
-                    <Button title="Add category" color="#24d133" />
+                    <Button title="Add category" color="#24d133" onClick={() => history.push("/admin/categories/creature")}/>
                     </CategoryStyled.ButtonWrapper>
             <CategoryStyled.Table >
                 <CategoryStyled.Body>
