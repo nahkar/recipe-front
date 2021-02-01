@@ -4,8 +4,10 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { userRegistration } from '../../store/user/actions';
 import Loader from '../Loader';
+import ButtonLog from './../../shared/Button/ButtonLog';
+
+import { userRegistration } from '../../store/user/actions';
 import routes from './../../constants/routes';
 import { MIN_LENGTH } from './../../constants/form';
 
@@ -78,14 +80,15 @@ export default function Registration({ history }) {
             </RegistrationStyled.Error>
           )}
             <RegistrationStyled.WrapperForButton>
-            <RegistrationStyled.BtnSubmit type="submit" value="Create User" />
+            {/* <RegistrationStyled.BtnSubmit type="submit" value="Create User" /> */}
+            <ButtonLog title="Create new user" type="submit"/>
             
           </RegistrationStyled.WrapperForButton>
 
           <Link to={routes.login} style={{ textDecoration: 'none' }}>
               <RegistrationStyled.LinkReg>If you have registered before, you can LOGIN</RegistrationStyled.LinkReg>
           </Link>
-          
+
         </RegistrationStyled.Form>
       </RegistrationStyled.WrapperForRegistration>
     </>

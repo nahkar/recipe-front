@@ -13,14 +13,17 @@ export default function Users() {
   const { isLoading, users } = useSelector(state => ({
     users: state.user.users,
     isLoading: state.user.isLoading,
-}))
+  }))
+  
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(getUsers())
-  }, [])
+    const getUsersList = () => dispatch(getUsers());
+    getUsersList();
+  }, [dispatch]);
 
   const deleteId = async (id) => {
-   await api.user.deleteUser(id);
+    await api.user.deleteUser(id);
     dispatch(getUsers());
   }
   

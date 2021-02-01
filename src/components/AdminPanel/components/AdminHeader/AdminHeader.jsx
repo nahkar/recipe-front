@@ -11,8 +11,8 @@ export default function AdminHeaderComponent({ history }) {
         if (accessToken) {
                 setEmail(JSON.parse(atob(accessToken.split(".")[1])).email);
         }
-
-    },[])
+    }, [])
+    
     const dispatch = useDispatch();
     
     const logout = (refreshToken) => dispatch(userLogOut({ refreshToken, history }));

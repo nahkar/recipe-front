@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 import routes from '../../constants/routes';
 
+import ButtonLog from './../../shared/Button/ButtonLog';
+
 import LoginStyled from './styled.js';
 
 const ForgotPass = () => {
@@ -30,7 +32,8 @@ const ForgotPass = () => {
                     {errors.email && errors.email.type === 'required' && <LoginStyled.Error>This field is required</LoginStyled.Error>}
                     {errors.email && errors.email.type === 'minLength' && <LoginStyled.Error>This field is required minLength of 5 symbols</LoginStyled.Error>}
 
-                <LoginStyled.BtnSubmit type="submit" value="Enter" />
+                {/* <LoginStyled.BtnSubmit type="submit" value="Enter" /> */}
+                <ButtonLog title="Send new password" type="submit"/>
                 <LoginStyled.LinkBlock>
                     <Link to={routes.registration} style={{ textDecoration: 'none' }}>
                         <LoginStyled.StyledLink>

@@ -23,10 +23,12 @@ const Routes = () => {
         <BrowserRouter>
             
             <Switch>
-                <Route exact path={routes.webHome} component={Main} />
+                <Route exact path={routes.webHome} component={ Main } />
+
                 <PublicRoute path={routes.registration} component={ Registration }/>
-                <PublicRoute exact path={routes.login} component={Login} />
-                <PrivateRoute exact path={routes.main} component={AdminPanel} />
+                <PublicRoute exact path={routes.login} component={ Login } />
+                
+                <PrivateRoute exact path={routes.main} component={ AdminPanel } />
 
                 <PrivateRoute exact path={routes.dashboard} component={ () => (
                     <AdminPanel>

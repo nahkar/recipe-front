@@ -16,18 +16,20 @@ const CategoryList = (history) => {
     }));
 
     const dispatch = useDispatch();
+
     
     useEffect(() => {
         dispatch(getCategories());
-        console.log('Category', category);
-    }, [])
+        const getCategory = () => dispatch(getCategories());
+        getCategory();
+    }, [dispatch])
 
     const deleteCategory = async(id) => {
         await api.user.deleteCategory(id);
         dispatch(getCategories());
-        
     }
 
+    
     return (
         <>
         {isLoading && <Loader />}
