@@ -1,8 +1,14 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { userLogOut } from '../../store/user/actions';
 
+import Loader from '../Loader';
+
 function Main({history}) {
+
+    const { isLoading } = useSelector(state => ({
+        isLoading: state.user.isLoading,
+    }))
 
     const dispatch = useDispatch();
 
@@ -14,6 +20,7 @@ function Main({history}) {
 
     return (
         <div>
+            {isLoading && <Loader/>}
             Main
              <button onClick={logOutHandler}>Logout</button>
         </div>

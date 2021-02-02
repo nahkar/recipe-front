@@ -22,6 +22,7 @@ const api = {
     getUsers: () => axiosInstance.get(`/user`),
 
     fetchCategories: () => axiosInstance.get(`/category`),
+    deleteCategory: (id) => axiosInstance.delete(`/category/${id}`),
     createCategory: (data) => axiosInstance.post(`/category`, data),
     createRecipe: (data) => axiosInstance.post(`/recipe`, data),
     fetchRecipes: () => axiosInstance.get(`/recipe`),

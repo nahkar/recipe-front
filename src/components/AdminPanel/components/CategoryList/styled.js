@@ -1,22 +1,30 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
   padding: 20px;
   font-size: 18px;
   background-color: #ccc;
 `;
-
+// const ButtonTableWrapper = styled.div``;
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
 const Table = styled.table`
+  align-self: center;
+  width: 100%;
   border-spacing: 0px;
   padding: 10px;
-  width: 100%;
   background-color: #fff;
   box-shadow: 0 -5px 10px rgba(119, 119, 119, 0.829);
 `;
 
 const Header = styled.tr`
   background-color: #cccccc;
+  border-spacing: 0 20px;
 `;
 
 const List = styled.tr``;
@@ -24,11 +32,18 @@ const List = styled.tr``;
 const ColumnName = styled.th`
   padding: 10px;
   text-align: left;
+  width: 33%;
+  &:last-child {
+    text-align: center;
+  }
 `;
 
 const Content = styled.td`
   text-align: left;
   padding-left: 30px;
+  &:last-child {
+    text-align: center;
+  }
 `;
 
 const ContentName = styled.td`
@@ -90,71 +105,9 @@ const CategoryStyled = {
   DeleteBtn,
   EditBtn,
   Body,
+  // ButtonTableWrapper,
+  ButtonWrapper,
 };
 
 export default CategoryStyled;
 
-// const CategoryWrapper = styled.div`
-//   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-//   width: 100%;
-//   padding: 20px;
-//   background-color: rgb(226, 231, 236);
-//   display: flex;
-//   flex-direction: column;
-//   min-height: 100vh;
-// `;
-
-// const CategoryTopInfo = styled.div`
-//   display: flex;
-//   background-color: rgb(85, 85, 85);
-//   color: #fff;
-//   padding: 15px;
-//   font-size: 18px;
-//   margin-bottom: 20px;
-// `;
-
-// const CategoryTopNumber = styled.div`
-//   flex-basis: 100px;
-//   border-left: 1px solid #fff;
-//   border-right: 1px solid #fff;
-//   text-align: center;
-// `;
-
-// const CategoryTopName = styled.div`
-//   flex-basis: 70%;
-//   border-right: 1px solid #fff;
-//   text-align: center;
-//   text-transform: uppercase;
-// `;
-
-// const CategoryTopAction = styled(CategoryTopName)`
-//   flex-basis: 20%;
-// `;
-
-// const CategoryList = styled.div`
-//   background-color: rgb(255, 250, 202);
-//   display: flex;
-//   padding: 15px;
-//   font-size: 18px;
-//   margin-bottom: 10px;
-// `;
-
-// const CategoryDataNumber = styled(CategoryTopNumber)`
-//   border-left: 1px solid #000;
-//   border-right: 1px solid #000;
-// `;
-
-// const CategoryDataName = styled(CategoryTopName)`
-//   border-right: 1px solid #000;
-// `;
-
-// const CategoryListStyled = {
-//   CategoryWrapper,
-//   CategoryTopInfo,
-//   CategoryTopNumber,
-//   CategoryTopName,
-//   CategoryTopAction,
-//   CategoryList,
-//   CategoryDataNumber,
-//   CategoryDataName,
-// };

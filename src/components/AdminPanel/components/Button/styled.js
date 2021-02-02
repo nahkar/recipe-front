@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
-const AddBtn = styled.button`
+const Button = styled.button`
   width: 100px;
   margin-bottom: 5px;
-  background-color: #24d133;
+  background-color: ${(props) => props.color};
   color: #ffffff;
   border: none;
   padding: 5px 15px;
+  margin-left: 5px;
   border-radius: 5px;
   outline: none;
   cursor: pointer;
@@ -15,8 +16,10 @@ const AddBtn = styled.button`
     box-shadow: inset 0 0 3px #000000;
   }
   :hover {
-    background-color: #25b531;
+    opacity: 0.7;
   }
 `;
 
-export default AddBtn;
+const StyledButton = { Button };
+
+export default StyledButton;

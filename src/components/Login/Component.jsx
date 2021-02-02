@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import Loader from '../Loader';
 import routes from './../../constants/routes';
 
-import ButtonLog from '../../shared/Button';
+import { ButtonLog } from '../../shared/Button';
 
 import LoginStyled from './styled';
 import { MIN_LENGTH } from './../../constants/form';

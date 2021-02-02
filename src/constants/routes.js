@@ -10,6 +10,7 @@ const routes = {
   dashboard: '/admin/dashboard',
   categories: '/admin/categories',
   recipes: '/admin/recipes',
+  recipeCreate: '/admin/recipes/create',
   users: '/admin/users',
   notFound: '*',
 };

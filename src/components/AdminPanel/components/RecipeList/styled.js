@@ -1,67 +1,116 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-const RecipeWrapper = styled.div`
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  width: 100%;
-  padding: 20px;
-  background-color: rgb(226, 231, 236);
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const RecipeTopInfo = styled.div`
-  display: flex;
-  background-color: rgb(85, 85, 85);
-  color: #fff;
-  padding: 15px;
+  width: 100%;
+  padding: 20px;
   font-size: 18px;
-  margin-bottom: 20px;
+  background-color: #ccc;
 `;
 
-const RecipeTopNumber = styled.div`
-  flex-basis: 100px;
-  border-left: 1px solid #fff;
-  border-right: 1px solid #fff;
-  text-align: center;
-`;
-
-const RecipeTopName = styled.div`
-  flex-basis: 70%;
-  border-right: 1px solid #fff;
-  text-align: center;
-  text-transform: uppercase;
-`;
-
-const RecipeTopAction = styled(RecipeTopName)`
-  flex-basis: 20%;
-`;
-
-const RecipeList = styled.div`
-  background-color: rgb(255, 250, 202);
+const ButtonWrapper = styled.div`
   display: flex;
-  padding: 15px;
-  font-size: 18px;
-  margin-bottom: 10px;
+  justify-content: flex-end;
 `;
 
-const RecipeDataNumber = styled(RecipeTopNumber)`
-  border-left: 1px solid #000;
-  border-right: 1px solid #000;
+const Table = styled.table`
+  align-self: center;
+  width: 100%;
+  border-spacing: 0px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 -5px 10px rgba(119, 119, 119, 0.829);
 `;
 
-const RecipeDataName = styled(RecipeTopName)`
-  border-right: 1px solid #000;
+const Header = styled.tr`
+  background-color: #cccccc;
+  border-spacing: 0 20px;
 `;
 
-const RecipeListStyled = {
-  RecipeWrapper,
-  RecipeTopInfo,
-  RecipeTopNumber,
-  RecipeTopName,
-  RecipeTopAction,
-  RecipeList,
-  RecipeDataNumber,
-  RecipeDataName,
+const List = styled.tr``;
+
+const ColumnName = styled.th`
+  padding: 10px;
+  text-align: left;
+  /* width: 33%; */
+  &:first-child {
+    width: 5%;
+  }
+  &:last-child {
+    text-align: center;
+  }
+`;
+
+const Content = styled.td`
+  text-align: left;
+  padding-left: 30px;
+  &:last-child {
+    text-align: center;
+  }
+`;
+
+const ContentName = styled.td`
+  text-align: left;
+  padding-left: 17px;
+`;
+
+const UserName = styled.span`
+  padding-left: 10px;
+`;
+
+const UserImg = styled.img`
+  border-radius: 100%;
+  align-self: center;
+`;
+
+const DeleteBtn = styled.button`
+  float: right;
+  background-color: #ff0000;
+  color: #ffffff;
+  border: none;
+  padding: 5px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  :active {
+    box-shadow: inset 0 0 3px #000000;
+  }
+`;
+
+const EditBtn = styled.button`
+  float: right;
+  background-color: #24d133;
+  color: #ffffff;
+  border: none;
+  padding: 5px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  :active {
+    box-shadow: inset 0 0 3px #000000;
+  }
+`;
+
+const Body = styled.tbody``;
+
+const RecipeStyled = {
+  Wrapper,
+  Table,
+  ColumnName,
+  Header,
+  List,
+  Content,
+  ContentName,
+  UserName,
+  UserImg,
+  DeleteBtn,
+  EditBtn,
+  Body,
+  ButtonWrapper,
 };
 
-export default RecipeListStyled;
+export default RecipeStyled;
+
