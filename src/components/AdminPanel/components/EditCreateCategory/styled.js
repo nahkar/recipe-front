@@ -1,6 +1,11 @@
 import styled from "styled-components";
 const Wrapper = styled.div`
   padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px black;
 `;
 const NameInput = styled.label``;
 

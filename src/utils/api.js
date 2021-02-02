@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 const BASE_URL = `https://stormy-badlands-73681.herokuapp.com`;
 
@@ -24,15 +24,18 @@ const api = {
     fetchCategories: () => axiosInstance.get(`/category`),
     deleteCategory: (id) => axiosInstance.delete(`/category/${id}`),
     createCategory: (data) => axiosInstance.post(`/category`, data),
+    editCategory: (id, data) => axiosInstance.put(`/category/${id}`, data),
+    getCategory: (id) => axiosInstance.get(`/category/${id}`),
+    getCategories: () => axiosInstance.get(`/category`),
     createRecipe: (data) => axiosInstance.post(`/recipe`, data),
     fetchRecipes: () => axiosInstance.get(`/recipe`),
 
     login: (body) => {
       return axiosInstance.post(`/auth/login`, body).then(({ data, body }) => {
         console.log(body);
-        localStorage.setItem('access_token', data.access_token);
-        localStorage.setItem('expires_in', data.expires_in);
-        localStorage.setItem('refresh_token', data.refresh_token);
+        localStorage.setItem("access_token", data.access_token);
+        localStorage.setItem("expires_in", data.expires_in);
+        localStorage.setItem("refresh_token", data.refresh_token);
         return data;
       });
     },

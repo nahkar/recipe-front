@@ -9,9 +9,7 @@ import api from "../../../../utils/api"
 import CategoryStyled from './styled';
 import Button from "../Button"
 import routes from "../../../../constants/routes"
-import CreateCategory from "../CreateCategory"
 const CategoryList = ({history}) => {
-    // const [id, setId] = useState();
     const { isLoading, category } = useSelector(state => ({
         category: state.category.category,
         isLoading: state.category.isLoading,
@@ -30,17 +28,16 @@ const CategoryList = ({history}) => {
         await api.user.deleteCategory(id);
         dispatch(getCategories());
     }
-
-    const editCategory =(id) => {
-        history.push(routes.categoriesCreature)
-    }
     
+    const editBtnHandler = (id) => {
+        history.push(`${routes.categoriesEdit}?id=${id}`)
+    }
     return (
         <>
         {isLoading && <Loader />}
             <CategoryStyled.Wrapper>
                     <CategoryStyled.ButtonWrapper>
-                    <CategoryStyled.LinkButton to={routes.categoriesCreature}>
+                    <CategoryStyled.LinkButton to={routes.categoriesCreate}>
                              <Button title="Add category" color="#24d133" />
                     </CategoryStyled.LinkButton>
                     </CategoryStyled.ButtonWrapper>
@@ -62,7 +59,7 @@ const CategoryList = ({history}) => {
                                     <CategoryStyled.UserName>{ category.title}</CategoryStyled.UserName>
                                 </CategoryStyled.ContentName>
                                 <CategoryStyled.Content>
-                                <Button title="Edit" color="#24d133" onClick={ () =>  setId(category.id)}/>
+                                <Button title="Edit" color="#24d133" onClick={() => editBtnHandler(category.id)}/>
                                <Button title="Delete" color="#ff0000" onClick={()=> deleteCategory(category.id)}/>
                             </CategoryStyled.Content>
                         </CategoryStyled.List>)
