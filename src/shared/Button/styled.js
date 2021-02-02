@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import theme from './theme';
 
 const BtnSubmit = styled.button`
-  font-size: calc(5px + 2vmin);
+  font-size: calc(2px + 2vmin);
   font-weight: bold;
   color: ${theme.primaryColor};
   background-color: ${theme.secondColor};

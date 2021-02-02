@@ -24,7 +24,7 @@ const Routes = () => {
         <BrowserRouter>
             
             <Switch>
-                <Route exact path={ routes.webHome } component={ Main } />
+                <PrivateRoute exact path={ routes.webHome } component={ Main } />
 
                 <PublicRoute path={ routes.registration } component={ Registration }/>
 
@@ -56,9 +56,9 @@ const Routes = () => {
                     </AdminPanel>
                 )} />
 
-                <PrivateRoute path={ routes.recipeCreate } component={() => (
+                <PrivateRoute path={ routes.recipeCreate } component={(props) => (
                     <AdminPanel>
-                        <CreateRecipe/>
+                        <CreateRecipe {...props}/>
                     </AdminPanel>
                 )} />
 

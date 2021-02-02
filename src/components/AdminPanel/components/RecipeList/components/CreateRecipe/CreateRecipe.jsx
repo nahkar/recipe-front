@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
 import { getCategories } from './../../../../../../store/category/actions';
+import { createRecipe } from './../../../../../../store/recipe/actions';
+import routes from './../../../../../../constants/routes';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CreateStyled from './styled';
@@ -16,15 +18,27 @@ const CreateRecipe = ({history}) => {
     }));
 
     const dispatch = useDispatch();
+    const generateRecipe = (data, history) => dispatch(createRecipe(data, history));
 
     useEffect(() => {
         const getCategory = () => dispatch(getCategories());
         getCategory();
     }, [dispatch]);
 
-    const { register, handleSubmit, errors } = useForm();
+    
+    const onSubmit = (data) => {
+        const dataRecipe = {
+            title: data.title,
+            body: data.description,
+            img: data.file, 
+        }
+        generateRecipe(dataRecipe);
+        console.log(dataRecipe);
+        history.push(routes.recipes);
 
-    const onSubmit = (data) => console.log(data);
+    }
+
+    const { register, handleSubmit } = useForm();
 
     return (
         <CreateStyled.CreateWrapper>
@@ -66,7 +80,6 @@ const CreateRecipe = ({history}) => {
 
                         <CreateStyled.Button type="submit" value="Publish your recipe"/>
                     </CreateStyled.Form>
-
                    
                 </CreateStyled.RecipeBlock>
             </CreateStyled.MainPage>

@@ -26,3 +26,15 @@ export const getRecipes = () => (dispatch) => {
       dispatch(recipeError());
     });
 };
+
+export const createRecipe = () => (dispatch) => {
+  dispatch(recipeRequest());
+  return api.user
+    .createRecipe()
+    .then((response) => {
+      dispatch(recipeSuccess(response));
+    })
+    .catch((err) => {
+      dispatch(recipeError());
+    });
+};
