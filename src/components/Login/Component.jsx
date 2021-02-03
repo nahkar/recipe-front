@@ -50,7 +50,7 @@ const Login = ({ history }) => {
                     type="password"
                     name="password"
                     placeholder="Enter your password"
-                    ref={register({ required: true, minLength: MIN_LENGTH })} />
+                    ref={register({ required: true, minLength: MIN_LENGTH })}/>
                 
                 {errors.password && errors.password.type === 'required' && <LoginStyled.Error>This field is required</LoginStyled.Error>}
                 {errors.password && errors.password.type === 'minLength' && <LoginStyled.Error>This field is required minLength of { MIN_LENGTH } symbols</LoginStyled.Error>}
