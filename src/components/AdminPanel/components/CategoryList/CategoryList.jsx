@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { getCategories } from '../../../../store/category/actions';
 import Loader from '../../../Loader';
-import Button from "../Button";
 
 import api from "../../../../utils/api";
+
+import Button from "../Button";
 
 import CategoryStyled from './styled';
 

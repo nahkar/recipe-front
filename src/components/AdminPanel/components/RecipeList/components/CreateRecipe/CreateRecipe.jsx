@@ -15,7 +15,7 @@ const CreateRecipe = ({history}) => {
 
     const [select, setSelect] = useState();
 
-    const {isLoading, category  } = useSelector(state => ({
+    const { category  } = useSelector(state => ({
         isLoading: state.category.isLoading,
         category: state.category.category,
     }));

@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../../../store/user/actions";
 import moment from "moment";
 import Loader from "../../../Loader";
-import { userEmail } from './../../../../store/user/actions';
-// import {getUserEmailFromLocal} from '../../../../utils/';
 
 import UsersTable from "./styled";
 
@@ -27,10 +25,6 @@ export default function Users() {
     if (dispatch) {
       const getUsersList = () => dispatch(getUsers());
       getUsersList();
-  
-      // const email = getUserEmailFromLocal();
-  
-      // dispatch(userEmail(email));
     }
     
   }, [dispatch]);

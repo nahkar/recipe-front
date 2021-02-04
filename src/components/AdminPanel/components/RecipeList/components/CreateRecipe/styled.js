@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { Multiselect } from 'multiselect-react-dropdown';
-
 import dish from '../../img/serving-dish.png';
 
 const CreateWrapper = styled.div`
@@ -58,8 +56,7 @@ const CategoryTitle = styled.span`
     border-bottom: 1px solid grey;
     display: inline-block;
     margin-bottom: 15px;
-    /* width: 100%; */
-`
+`;
 
 const RecipeBlock = styled.div`
     background-color: #fff;
@@ -100,7 +97,7 @@ const RecipeDescription = styled.textarea`
 const ChooseFile = styled.input`
     width: 100%;
     margin-bottom: 15px;
-`
+`;
 
 const Label = styled.label`
   display: inline-block;

@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   font-size: 18px;
   background-color: #ccc;
 `;
-// const ButtonTableWrapper = styled.div``;
+
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -105,7 +105,6 @@ const CategoryStyled = {
   DeleteBtn,
   EditBtn,
   Body,
-  // ButtonTableWrapper,
   ButtonWrapper,
 };
 
