@@ -11,6 +11,7 @@ import {
   USERS_REQUEST,
   USERS_SUCCESS,
   USERS_ERROR,
+  USER_EMAIL,
 } from './constants';
 
 import routes from "../../constants/routes";
@@ -66,6 +67,11 @@ const usersSuccess = (payload) => ({
 
 const usersError = () => ({
   type: USERS_ERROR,
+});
+
+export const userEmail = (payload) => ({
+  type: USER_EMAIL,
+  payload,
 });
 
 export const userLogin = ({ data, history }) => (dispatch) => {

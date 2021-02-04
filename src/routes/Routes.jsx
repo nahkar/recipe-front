@@ -15,6 +15,7 @@ import CategoryList from './../components/AdminPanel/components/CategoryList/Cat
 import RecipeList from './../components/AdminPanel/components/RecipeList/RecipeList';
 import Dashboard from './../components/AdminPanel/components/Dashboard/Dashboard';
 import AdminPanel from './../components/AdminPanel';
+import CreateRecipe from './../components/AdminPanel/components/RecipeList/components/CreateRecipe';
 
 import routes from '../constants/routes';
 const Routes = () => {
@@ -23,34 +24,41 @@ const Routes = () => {
         <BrowserRouter>
             
             <Switch>
-                <Route exact path={routes.webHome} component={ Main } />
+                <PrivateRoute exact path={ routes.webHome } component={ Main } />
 
-                <PublicRoute path={routes.registration} component={ Registration }/>
-                <PublicRoute exact path={routes.login} component={ Login } />
+                <PublicRoute path={ routes.registration } component={ Registration }/>
+
+                <PublicRoute exact path={ routes.login } component={ Login } />
                 
-                <PrivateRoute exact path={routes.main} component={ AdminPanel } />
+                <PrivateRoute exact path={ routes.main } component={ AdminPanel } />
 
-                <PrivateRoute exact path={routes.dashboard} component={ () => (
+                <PrivateRoute path={ routes.dashboard } component={ () => (
                     <AdminPanel>
                         <Dashboard/>
                     </AdminPanel>
                 )} />
                 
-                <PrivateRoute exact path={routes.users} component={ () => (
+                <PrivateRoute path={ routes.users } component={ () => (
                     <AdminPanel>
                         <Users/>
                     </AdminPanel>
                 )} />
                 
-                <PrivateRoute path={routes.categories} component={() => (
+                <PrivateRoute path={ routes.categories } component={() => (
                     <AdminPanel>
                         <CategoryList/>
                     </AdminPanel>
                 )} />
                 
-                <PrivateRoute path={routes.recipes} component={() => (
+                <PrivateRoute exact path={ routes.recipes } component={({history}) => (
                     <AdminPanel>
-                        <RecipeList/>
+                        <RecipeList history={history}/>
+                    </AdminPanel>
+                )} />
+
+                <PrivateRoute path={ routes.recipeCreate } component={(props) => (
+                    <AdminPanel>
+                        <CreateRecipe {...props}/>
                     </AdminPanel>
                 )} />
 

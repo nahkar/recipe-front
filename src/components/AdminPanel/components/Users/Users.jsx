@@ -8,18 +8,25 @@ import Loader from "../../../Loader";
 import UsersTable from "./styled";
 
 import api from "../../../../utils/api";
-import Button from "../Button"
+import Button from "../Button";
+
 export default function Users() {
+
   const { isLoading, users } = useSelector(state => ({
     users: state.user.users,
     isLoading: state.user.isLoading,
+    email: state.user.email,
   }))
   
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getUsersList = () => dispatch(getUsers());
-    getUsersList();
+    
+    if (dispatch) {
+      const getUsersList = () => dispatch(getUsers());
+      getUsersList();
+    }
+    
   }, [dispatch]);
 
   const deleteId = async (id) => {

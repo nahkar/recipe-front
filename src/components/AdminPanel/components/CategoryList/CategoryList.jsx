@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getCategories } from '../../../../store/category/actions';
 import Loader from '../../../Loader';
 
-import api from "../../../../utils/api"
+import api from "../../../../utils/api";
+
+import Button from "../Button";
 
 import CategoryStyled from './styled';
-import Button from "../Button"
+
 const CategoryList = (history) => {
 
     const { isLoading, category } = useSelector(state => ({
@@ -42,7 +44,7 @@ const CategoryList = (history) => {
                     <CategoryStyled.Header>
                         <CategoryStyled.ColumnName>Number</CategoryStyled.ColumnName>
                         <CategoryStyled.ColumnName>Category</CategoryStyled.ColumnName>
-                        <CategoryStyled.ColumnName></CategoryStyled.ColumnName>
+                        <CategoryStyled.ColumnName>Actions</CategoryStyled.ColumnName>
                     </CategoryStyled.Header>
 
                 {category.map((category, index) => {
@@ -50,13 +52,13 @@ const CategoryList = (history) => {
                     return (
                         <CategoryStyled.List key={ category.id }>
                             <CategoryStyled.Content>{ index+1 }</CategoryStyled.Content>
-                                <CategoryStyled.ContentName>
-                                    <CategoryStyled.UserImg/>
-                                    <CategoryStyled.UserName>{ category.title}</CategoryStyled.UserName>
-                                </CategoryStyled.ContentName>
-                                <CategoryStyled.Content>
-                               <Button title="Edit" color="#24d133"/>
-                               <Button title="Delete" color="#ff0000" onClick={()=> deleteCategory(category.id)}/>
+                            <CategoryStyled.ContentName>
+                                <CategoryStyled.UserImg/>
+                                <CategoryStyled.UserName>{ category.title}</CategoryStyled.UserName>
+                            </CategoryStyled.ContentName>
+                            <CategoryStyled.Content>
+                                <Button title="Edit" color="#24d133"/>
+                                <Button title="Delete" color="#ff0000" onClick={()=> deleteCategory(category.id)}/>
                             </CategoryStyled.Content>
                         </CategoryStyled.List>)
                     })}

@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import AdminHeader from "./styled"
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import moment from "moment";
+
 import { userLogOut } from '../../../../store/user/actions';
-import moment from "moment"
-import { imgForLogOutBtn } from "../../../../assets/img/img"
+import { imgForLogOutBtn } from "../../../../assets/img/img";
+
+import AdminHeader from "./styled";
+
 export default function AdminHeaderComponent({ history }) {
-    const [email, setEmail] = useState();
-    useEffect(() => {
-        const accessToken = localStorage.getItem('access_token');
-        if (accessToken) {
-                setEmail(JSON.parse(atob(accessToken.split(".")[1])).email);
-        }
-    }, [])
+
+    const { email } = useSelector(state => ({
+        email: state.user.email,
+    }))
     
     const dispatch = useDispatch();
     

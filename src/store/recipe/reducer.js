@@ -1,7 +1,7 @@
 import { RECIPE_REQUEST, RECIPE_SUCCESS, RECIPE_ERROR } from './constants';
 
 const initialState = {
-  recipes: {},
+  recipes: [],
 };
 
 const recipeReducer = (state = initialState, action) => {

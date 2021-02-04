@@ -22,9 +22,13 @@ const api = {
     getUsers: () => axiosInstance.get(`/user`),
 
     fetchCategories: () => axiosInstance.get(`/category`),
+
     deleteCategory: (id) => axiosInstance.delete(`/category/${id}`),
+
     createCategory: (data) => axiosInstance.post(`/category`, data),
+
     createRecipe: (data) => axiosInstance.post(`/recipe`, data),
+
     fetchRecipes: () => axiosInstance.get(`/recipe`),
 
     login: (body) => {
@@ -33,6 +37,7 @@ const api = {
         localStorage.setItem('access_token', data.access_token);
         localStorage.setItem('expires_in', data.expires_in);
         localStorage.setItem('refresh_token', data.refresh_token);
+
         return data;
       });
     },
@@ -42,7 +47,6 @@ const api = {
         refreshToken,
       });
     },
-    // getUserLogin: () => axiosInstance.post(``)
   },
 };
 
