@@ -37,6 +37,7 @@ const api = {
         localStorage.setItem('access_token', data.access_token);
         localStorage.setItem('expires_in', data.expires_in);
         localStorage.setItem('refresh_token', data.refresh_token);
+
         return data;
       });
     },

@@ -4,22 +4,35 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../../../store/user/actions";
 import moment from "moment";
 import Loader from "../../../Loader";
+import { userEmail } from './../../../../store/user/actions';
+// import {getUserEmailFromLocal} from '../../../../utils/';
 
 import UsersTable from "./styled";
 
 import api from "../../../../utils/api";
-import Button from "../Button"
+import Button from "../Button";
+
 export default function Users() {
+
   const { isLoading, users } = useSelector(state => ({
     users: state.user.users,
     isLoading: state.user.isLoading,
+    email: state.user.email,
   }))
   
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getUsersList = () => dispatch(getUsers());
-    getUsersList();
+    
+    if (dispatch) {
+      const getUsersList = () => dispatch(getUsers());
+      getUsersList();
+  
+      // const email = getUserEmailFromLocal();
+  
+      // dispatch(userEmail(email));
+    }
+    
   }, [dispatch]);
 
   const deleteId = async (id) => {

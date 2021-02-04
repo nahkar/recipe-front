@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { Multiselect } from 'multiselect-react-dropdown';
+
 import dish from '../../img/serving-dish.png';
 
 const CreateWrapper = styled.div`
@@ -104,6 +106,7 @@ const Label = styled.label`
   display: inline-block;
   font-size: 20px;
   margin-bottom: 10px;
+  margin-top: 10px;
 
 `;
 
@@ -127,19 +130,6 @@ const Checkbox = styled.input`
     margin-right: 15px;
     width: 17px;
     height: 17px;
-`
-
-const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
-    border: 0;
-    clip: rect(0 0 0 0);
-    clippath: inset(50%);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
 `;
 
 const CreateStyled = {

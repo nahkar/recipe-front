@@ -32,8 +32,9 @@ const List = styled.tr``;
 
 const ColumnName = styled.th`
   padding: 10px;
+  padding-left: 30px;
   text-align: left;
-  /* width: 33%; */
+  width: 25%;
   &:first-child {
     width: 5%;
   }

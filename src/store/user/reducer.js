@@ -1,3 +1,4 @@
+import { getDataFromToken } from '../../utils/token.service';
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -11,13 +12,13 @@ import {
   USERS_REQUEST,
   USERS_SUCCESS,
   USERS_ERROR,
+  USER_EMAIL,
 } from './constants';
 
 const initialState = {
   users: [],
-  user: {},
-  data: {},
-  email: "",
+  userId: getDataFromToken(localStorage.getItem('access_token'), 'id'),
+  email: getDataFromToken(localStorage.getItem('access_token'), 'email'),
   isLoggedIn: !!localStorage.getItem('refresh_token'),
   isLoading: false,
 };
@@ -40,11 +41,13 @@ const userReducer = (state = initialState, action) => {
         isLoading: false,
       };
     case LOGIN_SUCCESS:
+
       return {
         ...state,
-        data: payload,
         isLoggedIn: true,
         isLoading: false,
+        userId: getDataFromToken(payload.access_token, 'id'),
+        email: getDataFromToken(payload.access_token, 'email'),
       };
 
     case REGISTRATION_REQUEST:
@@ -66,13 +69,14 @@ const userReducer = (state = initialState, action) => {
     case REGISTRATION_SUCCESS:
       return {
         ...state,
-        data: payload,
         isLoading: false,
       };
 
     case LOGOUT_SUCCESS:
       return {
         ...state,
+        userId:null,
+        email:null,
         isLoggedIn: false,
         isLoading: false,
       };
@@ -83,6 +87,12 @@ const userReducer = (state = initialState, action) => {
         users: payload,
         isLoading: false,
       };
+      
+    case USER_EMAIL:
+      return {
+        ...state,
+        email: payload,
+      }
 
     default:
       return {

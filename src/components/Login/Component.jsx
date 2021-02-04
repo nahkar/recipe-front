@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogin } from '../../store/user/actions';
@@ -9,6 +9,8 @@ import Loader from '../Loader';
 import routes from './../../constants/routes';
 
 import { ButtonLog } from '../../shared/Button';
+// import { getUserEmailFromLocal } from '../../utils/';
+// import {loginSuccess} from '../../store/user/actions';
 
 import LoginStyled from './styled';
 import { MIN_LENGTH } from './../../constants/form';
@@ -27,6 +29,11 @@ const Login = ({ history }) => {
     const onSubmit = (data) => {
         login(data, history);
     }
+
+    // useEffect(() => {
+    //     const email = getUserEmailFromLocal();
+    //     dispatch(loginSuccess(email));
+    // }, [])
     
     const { register, handleSubmit, errors } = useForm();
 

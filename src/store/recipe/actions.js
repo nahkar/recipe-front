@@ -27,10 +27,10 @@ export const getRecipes = () => (dispatch) => {
     });
 };
 
-export const createRecipe = () => (dispatch) => {
+export const createRecipe = (data) => (dispatch) => {
   dispatch(recipeRequest());
   return api.user
-    .createRecipe()
+    .createRecipe(data)
     .then((response) => {
       dispatch(recipeSuccess(response));
     })

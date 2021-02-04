@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { Multiselect } from 'multiselect-react-dropdown';
 
 import { getCategories } from './../../../../../../store/category/actions';
 import { createRecipe } from './../../../../../../store/recipe/actions';
@@ -11,6 +12,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import CreateStyled from './styled';
 
 const CreateRecipe = ({history}) => {
+
+    const [select, setSelect] = useState();
 
     const {isLoading, category  } = useSelector(state => ({
         isLoading: state.category.isLoading,
@@ -24,21 +27,27 @@ const CreateRecipe = ({history}) => {
         const getCategory = () => dispatch(getCategories());
         getCategory();
     }, [dispatch]);
-
     
     const onSubmit = (data) => {
         const dataRecipe = {
+            userId: 1,
             title: data.title,
             body: data.description,
-            img: data.file, 
+            categoryIds: select.map(item => item.id),
         }
-        generateRecipe(dataRecipe);
-        console.log(dataRecipe);
-        history.push(routes.recipes);
 
+        generateRecipe(dataRecipe);
+        console.log('dataRecipe',dataRecipe);
+        history.push(routes.recipes);
     }
 
     const { register, handleSubmit } = useForm();
+
+    const selectHandler = (value) => {
+        setSelect(value);
+    }
+
+    console.log(select);
 
     return (
         <CreateStyled.CreateWrapper>
@@ -49,17 +58,10 @@ const CreateRecipe = ({history}) => {
 
                 <CreateStyled.CategoryBlock>
                     <CreateStyled.CategoryTitle>
-                        Post in categories:
+                        Post in category:
                     </CreateStyled.CategoryTitle>
 
-                    {category.map((category) => {
-                        return (
-                            <CreateStyled.ListItem key={category.id}>
-                                <CreateStyled.Checkbox type="checkbox"/>
-                                {category.title}
-                            </CreateStyled.ListItem>
-                            )
-                    })}
+                    <Multiselect options={category} displayValue='title' placeholder="Select category" required onSelect={selectHandler}/>
                 </CreateStyled.CategoryBlock>
 
                 <CreateStyled.RecipeBlock>
@@ -80,6 +82,7 @@ const CreateRecipe = ({history}) => {
 
                         <CreateStyled.Button type="submit" value="Publish your recipe"/>
                     </CreateStyled.Form>
+                    
                    
                 </CreateStyled.RecipeBlock>
             </CreateStyled.MainPage>
