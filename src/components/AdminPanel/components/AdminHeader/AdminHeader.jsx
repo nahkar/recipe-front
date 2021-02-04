@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import moment from "moment";
 
@@ -10,14 +10,9 @@ import AdminHeader from "./styled";
 
 export default function AdminHeaderComponent({ history }) {
 
-    const [email, setEmail] = useState();
-    
-    useEffect(() => {
-        const accessToken = localStorage.getItem('access_token');
-        if (accessToken) {
-                setEmail(JSON.parse(atob(accessToken.split(".")[1])).email);
-        }
-    }, [])
+    const { email } = useSelector(state => ({
+        email: state.user.email,
+    }))
     
     const dispatch = useDispatch();
     
