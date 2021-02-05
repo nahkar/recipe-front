@@ -4,34 +4,33 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../../../store/user/actions";
 import moment from "moment";
 import Loader from "../../../Loader";
-
+import Table from "../Table";
 import UsersTable from "./styled";
 
 import api from "../../../../utils/api";
-import Button from "../Button"
+import Button from "../Button";
 export default function Users() {
-  const { isLoading, users } = useSelector(state => ({
-    users: state.user.users,
-    isLoading: state.user.isLoading,
-  }))
-  
-  const dispatch = useDispatch();
+	const { isLoading, users } = useSelector((state) => ({
+		users: state.user.users,
+		isLoading: state.user.isLoading,
+	}));
 
-  useEffect(() => {
-    const getUsersList = () => dispatch(getUsers());
-    getUsersList();
-  }, [dispatch]);
+	const dispatch = useDispatch();
 
-  const deleteId = async (id) => {
-    await api.user.deleteUser(id);
-    dispatch(getUsers());
-  }
-  
-  return (
-    <>
-      
-      {isLoading && <Loader/>}
-    <UsersTable.Wrapper>
+	useEffect(() => {
+		const getUsersList = () => dispatch(getUsers());
+		getUsersList();
+	}, [dispatch]);
+
+	const deleteId = async (id) => {
+		await api.user.deleteUser(id);
+		dispatch(getUsers());
+	};
+
+	return (
+		<>
+			{isLoading && <Loader />}
+			{/* <UsersTable.Wrapper>
       
       <UsersTable.Table >
         <UsersTable.Body>
@@ -65,8 +64,8 @@ export default function Users() {
           })}
         </UsersTable.Body>
       </UsersTable.Table>
-      </UsersTable.Wrapper>
-    </>
-    
-  );
+      </UsersTable.Wrapper> */}
+			<Table items={users} names={["Id", "Email", "Role", "Created at"]} />
+		</>
+	);
 }
