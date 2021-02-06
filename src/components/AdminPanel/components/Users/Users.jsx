@@ -65,7 +65,7 @@ export default function Users() {
         </UsersTable.Body>
       </UsersTable.Table>
       </UsersTable.Wrapper> */}
-			<Table items={users} names={["Id", "Email", "Role", "Created at"]} />
+			<Table items={users} names={["Id", "Email", "Role", "Created at", "Updated at"]} />
 		</>
 	);
 }

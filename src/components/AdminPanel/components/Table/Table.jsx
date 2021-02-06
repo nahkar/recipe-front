@@ -13,11 +13,11 @@ export default function TableComponent({ names, items, editBtn, deleteBtn }) {
 					{deleteBtn && <TableStyled.ColumnName>Delete</TableStyled.ColumnName>}
 				</TableStyled.Header>
 				{items.map((item) => {
-					console.log(item.join());
 					return (
 						<TableStyled.List key={item.id}>
 							{names.map((name) => {
-								return <td>{item[name.toLowerCase()]}</td>;
+								const objKeysLowerCase = JSON.parse(JSON.stringify(item).toLowerCase());
+								return <td>{objKeysLowerCase[name.toLowerCase().replace(/ /g, '')]}</td>;
 							})}
 							{editBtn && (
 								<TableStyled.ContentName>
