@@ -1,6 +1,6 @@
 import React from "react";
 import TableStyled from "./styled";
-
+//test commit
 export default function TableComponent({ names, items, editBtn, deleteBtn }) {
 	return (
 		<TableStyled.Table>
