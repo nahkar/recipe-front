@@ -20,6 +20,8 @@ const RecipeList = ({history}) => {
         isLoading: state.recipe.isLoading,
     }));
 
+    console.log('RECIPE LIST', recipes);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -27,6 +29,9 @@ const RecipeList = ({history}) => {
         const getRecipesData = () => dispatch(getRecipes());
         getRecipesData();
         getCategoryData();
+        return () => {
+            console.log('UNMOUNT');
+        }
     }, [dispatch])
 
     return (

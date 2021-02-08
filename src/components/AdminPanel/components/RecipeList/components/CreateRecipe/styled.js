@@ -23,7 +23,7 @@ const Header = styled.div`
     justify-content: center;
     font-size: 26px;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     &::before {
         content: '';
         position: absolute;
@@ -42,25 +42,11 @@ const MainPage = styled.div`
     min-height: 70px;
     display: flex;
     justify-content: space-between;
-`;
-
-const CategoryBlock = styled.div`
-    background-color: #fff;
-    flex-basis: 30%;
-    min-height: 70px;
-    padding: 10px;
-    box-shadow: 0 -5px 10px rgba(119, 119, 119, 0.829);
-`;
-
-const CategoryTitle = styled.span`
-    border-bottom: 1px solid grey;
-    display: inline-block;
-    margin-bottom: 15px;
+    width: 100%;
 `;
 
 const RecipeBlock = styled.div`
     background-color: #fff;
-    flex-basis: 65%;
     min-height: 70px;
     padding: 10px;
     box-shadow: 0 -5px 10px rgba(119, 119, 119, 0.829);
@@ -77,9 +63,9 @@ const RecipeInput = styled.input`
     min-height: 30px;
     border: 1px solid red;
     border-radius: 5px;
-    padding: 10px;
+    padding: 5px 10px;
     outline: none;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     &:focus {
         box-shadow: 0 0 0 1px red;
     }
@@ -94,15 +80,10 @@ const RecipeDescription = styled.textarea`
     }
 `;
 
-const ChooseFile = styled.input`
-    width: 100%;
-    margin-bottom: 15px;
-`;
-
 const Label = styled.label`
   display: inline-block;
   font-size: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 3px;
   margin-top: 10px;
 
 `;
@@ -133,14 +114,11 @@ const CreateStyled = {
     CreateWrapper,
     Header,
     MainPage,
-    CategoryBlock,
     RecipeBlock,
-    CategoryTitle,
     RecipeInput,
     Form,
     RecipeDescription,
     Label,
-    ChooseFile,
     Button,
     ListItem,
     Checkbox,
