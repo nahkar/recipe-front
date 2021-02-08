@@ -1,6 +1,6 @@
 import React from "react";
 import TableStyled from "./styled";
-//test commit
+
 export default function TableComponent({ names, items, editBtn, deleteBtn }) {
 	return (
 		<TableStyled.Table>
@@ -16,6 +16,7 @@ export default function TableComponent({ names, items, editBtn, deleteBtn }) {
 					return (
 						<TableStyled.List key={item.id}>
 							{names.map((name) => {
+								console.log(item);
 								const objKeysLowerCase = JSON.parse(JSON.stringify(item).toLowerCase());
 								return <td>{objKeysLowerCase[name.toLowerCase().replace(/ /g, '')]}</td>;
 							})}

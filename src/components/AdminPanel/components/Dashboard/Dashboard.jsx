@@ -2,10 +2,10 @@ import React from 'react';
 
 import DashboardInfo from './components/DashboardInfo';
 import DashboardHistory from './components/DashboardHistory';
-import UserList from './components/UserList/UserList';
+// import UserList from './components/UserList/UserList';
 
 import DashboardStyled from './styled';
-
+import Users from "../Users"
 const Dashboard = () => {
     return (
         <DashboardStyled.DashboardWrapper>
@@ -17,8 +17,8 @@ const Dashboard = () => {
 
             <DashboardInfo />
             <DashboardHistory /> 
-            <UserList/>
-            
+            {/* <UserList/> */}
+            <Users/>
             <DashboardStyled.GlobalStyle/>
         </DashboardStyled.DashboardWrapper>
     )

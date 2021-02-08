@@ -1,7 +1,6 @@
 import styled from "styled-components";
 const Table = styled.table`
-	align-self: center;
-	width: 500px;
+    width: 100%;
 	border-spacing: 0px;
 	padding: 10px;
 	background-color: #fff;
