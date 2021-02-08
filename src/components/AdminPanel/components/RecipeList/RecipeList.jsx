@@ -51,7 +51,7 @@ const RecipeList = ({history}) => {
                         <RecipeStyled.List key={ recipe.id }>
                             <RecipeStyled.Content>{ index+1 }</RecipeStyled.Content>
                             <RecipeStyled.ContentName>
-                                <RecipeStyled.UserImg>{ recipe.img }</RecipeStyled.UserImg>
+                                {/* <RecipeStyled.UserImg>{ recipe.img }</RecipeStyled.UserImg> */}
                                 <RecipeStyled.UserName>{ recipe.title}</RecipeStyled.UserName>
                             </RecipeStyled.ContentName>
 

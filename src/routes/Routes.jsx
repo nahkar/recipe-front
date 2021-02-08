@@ -30,7 +30,13 @@ const Routes = () => {
 
                 <PublicRoute exact path={ routes.login } component={ Login } />
                 
-                <PrivateRoute exact path={ routes.main } component={ AdminPanel } />
+                {/* <PrivateRoute exact path={ routes.main } component={ AdminPanel } /> */}
+
+                <PrivateRoute path={ routes.main } component={ () => (
+                    <AdminPanel>
+                        <Dashboard/>
+                    </AdminPanel>
+                )} />
 
                 <PrivateRoute path={ routes.dashboard } component={ () => (
                     <AdminPanel>
