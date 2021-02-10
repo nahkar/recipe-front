@@ -11,6 +11,7 @@ const routes = {
   categories: '/admin/categories',
   recipes: '/admin/recipes',
   recipeCreate: '/admin/recipes/create',
+  recipeEdit: '/admin/recipes/edit',
   users: '/admin/users',
   notFound: '*',
 };

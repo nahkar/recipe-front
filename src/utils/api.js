@@ -27,10 +27,6 @@ const api = {
 
     createCategory: (data) => axiosInstance.post(`/category`, data),
 
-    createRecipe: (data) => axiosInstance.post(`/recipe`, data),
-
-    fetchRecipes: () => axiosInstance.get(`/recipe`),
-
     login: (body) => {
       return axiosInstance.post(`/auth/login`, body).then(({ data, body }) => {
         console.log(body);
@@ -48,6 +44,15 @@ const api = {
       });
     },
   },
+  recipe: {
+    createRecipe: (data) => axiosInstance.post(`/recipe`, data),
+
+    fetchRecipes: () => axiosInstance.get(`/recipe`),
+
+    editRecipe: (id, data) => axiosInstance.put(`/recipe/${id}`, data),
+
+    deleteRecipe: (id) => axiosInstance.delete(`/recipe/${id}`),
+  }
 };
 
 export default api;
