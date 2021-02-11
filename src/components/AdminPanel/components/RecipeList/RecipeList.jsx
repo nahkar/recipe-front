@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import moment from 'moment';
 
-import { getRecipes } from './../../../../store/recipe/actions';
+import { getRecipes, deleteRecipe } from './../../../../store/recipe/actions';
 import Loader from '../../../Loader';
 import routes from '../../../../constants/routes';
 
@@ -27,7 +27,15 @@ const RecipeList = ({history}) => {
         const getRecipesData = () => dispatch(getRecipes());
         getRecipesData();
         getCategoryData();
-    }, [dispatch])
+    }, [dispatch]);
+
+    const deleteCurrentRecipe = (id) => {
+        dispatch(deleteRecipe(id));
+    }
+
+    const editCurrentRecipe = (id) => {
+        history.push(`${routes.recipeEdit}/${id}`)
+    }
 
     return (
         <>
@@ -41,7 +49,7 @@ const RecipeList = ({history}) => {
                     <RecipeStyled.Header>
                         <RecipeStyled.ColumnName>№</RecipeStyled.ColumnName>
                         <RecipeStyled.ColumnName>Title</RecipeStyled.ColumnName>
-                        <RecipeStyled.ColumnName>Descriprion</RecipeStyled.ColumnName>
+                        <RecipeStyled.ColumnName>Category</RecipeStyled.ColumnName>
                         <RecipeStyled.ColumnName>Created At</RecipeStyled.ColumnName>
                         <RecipeStyled.ColumnName>Actions</RecipeStyled.ColumnName>
                     </RecipeStyled.Header>
@@ -55,11 +63,11 @@ const RecipeList = ({history}) => {
                                 <RecipeStyled.UserName>{ recipe.title}</RecipeStyled.UserName>
                             </RecipeStyled.ContentName>
 
-                            <RecipeStyled.Content>{ recipe.body }</RecipeStyled.Content>
+                            <RecipeStyled.Content>{ recipe.categories }</RecipeStyled.Content>
                             <RecipeStyled.Content>{ moment(recipe.createdAt).format('DD/MM/YYYY') }</RecipeStyled.Content>
                             <RecipeStyled.Content>
-                                <Button title="Edit" color="#24d133"/>
-                                <Button title="Delete" color="#ff0000"/>
+                                <Button title="Edit" color="#24d133" onClick={() => editCurrentRecipe(recipe.id)}/>
+                                <Button title="Delete" color="#ff0000" onClick={() => deleteCurrentRecipe(recipe.id)}/>
                             </RecipeStyled.Content>
                         </RecipeStyled.List>)
                     })}

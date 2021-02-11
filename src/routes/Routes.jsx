@@ -16,6 +16,7 @@ import RecipeList from './../components/AdminPanel/components/RecipeList/RecipeL
 import Dashboard from './../components/AdminPanel/components/Dashboard/Dashboard';
 import AdminPanel from './../components/AdminPanel';
 import CreateRecipe from './../components/AdminPanel/components/RecipeList/components/CreateRecipe';
+import EditRecipe from './../components/AdminPanel/components/RecipeList/components/EditRecipe';
 
 import routes from '../constants/routes';
 const Routes = () => {
@@ -65,6 +66,12 @@ const Routes = () => {
                 <PrivateRoute path={ routes.recipeCreate } component={(props) => (
                     <AdminPanel>
                         <CreateRecipe {...props}/>
+                    </AdminPanel>
+                )} />
+
+                <PrivateRoute path={ `${routes.recipeEdit}/:id` } component={(props) => (
+                    <AdminPanel>
+                        <EditRecipe {...props}/>
                     </AdminPanel>
                 )} />
 

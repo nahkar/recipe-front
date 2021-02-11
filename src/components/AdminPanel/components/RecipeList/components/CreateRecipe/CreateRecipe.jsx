@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { Multiselect } from 'multiselect-react-dropdown';
 
 import { getCategories } from './../../../../../../store/category/actions';
@@ -13,10 +13,9 @@ import CreateStyled from './styled';
 
 const CreateRecipe = ({history}) => {
 
-    const [select, setSelect] = useState();
-
-    const { category  } = useSelector(state => ({
+    const { category, userId  } = useSelector(state => ({
         category: state.category.category,
+        userId: state.user.userId,
     }));
 
     const dispatch = useDispatch();
@@ -29,39 +28,26 @@ const CreateRecipe = ({history}) => {
     
     const onSubmit = (data) => {
         const dataRecipe = {
-            userId: 1,
+            userId: String(userId),
             title: data.title,
             body: data.description,
-            categoryIds: select.map(item => item.id),
+            categoryIds: data.multiselect.map(item => item.id),
         }
 
-        generateRecipe(dataRecipe);
-        console.log('dataRecipe',dataRecipe);
+        generateRecipe(dataRecipe, history);
         history.push(routes.recipes);
     }
 
-    const { register, handleSubmit } = useForm();
-
-    const selectHandler = (value) => {
-        setSelect(value);
-    }
-
-    console.log(select);
+    const { register, handleSubmit, control } = useForm();
 
     return (
         <CreateStyled.CreateWrapper>
+
             <CreateStyled.Header>
-            <p>Create Your Own Recipe</p>
+                <p>Create Your Own Recipe</p>
             </CreateStyled.Header>
+
             <CreateStyled.MainPage>
-
-                <CreateStyled.CategoryBlock>
-                    <CreateStyled.CategoryTitle>
-                        Post in category:
-                    </CreateStyled.CategoryTitle>
-
-                    <Multiselect options={category} displayValue='title' placeholder="Select category" required onSelect={selectHandler}/>
-                </CreateStyled.CategoryBlock>
 
                 <CreateStyled.RecipeBlock>
                     <CreateStyled.Form onSubmit={handleSubmit(onSubmit)}>
@@ -74,14 +60,32 @@ const CreateRecipe = ({history}) => {
                             ref={register({required: true})}/>
 
                         <CreateStyled.Label>Add image</CreateStyled.Label>
-                        <CreateStyled.ChooseFile type="file" name="file" placeholder="Add image"/>
+                        <CreateStyled.RecipeInput 
+                            type="text"
+                            name="image"
+                            placeholder="add image of your dish"
+                            ref={register({required: true})}/>
 
+                        <CreateStyled.Label>Add category</CreateStyled.Label>
+                        <Controller
+                            control={control}
+                            name="multiselect"
+                            render={((
+                                { onChange }
+                            ) => (
+                            <Multiselect
+                            options={category} 
+                            displayValue='title' 
+                            placeholder="Select category"
+                            onSelect={onChange}
+                            />
+                            ))}
+                        />
                         <CreateStyled.Label>Write steps to prepare your dish</CreateStyled.Label>
-                        <CreateStyled.RecipeDescription rows="7" name="description" ref={register({required: true})}/>
+                        <CreateStyled.RecipeDescription rows="5" name="description" ref={register({required: true})}/>
 
                         <CreateStyled.Button type="submit" value="Publish your recipe"/>
                     </CreateStyled.Form>
-                    
                    
                 </CreateStyled.RecipeBlock>
             </CreateStyled.MainPage>

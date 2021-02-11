@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import dish from '../../img/serving-dish.png';
 
-const CreateWrapper = styled.div`
+const EditWrapper = styled.div`
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 100%;
     color: #000;
@@ -49,6 +49,7 @@ const MainPage = styled.div`
 const RecipeBlock = styled.div`
     width: 100%;
     background-color: #fff;
+    min-height: 70px;
     padding: 10px;
     box-shadow: 0 -5px 10px rgba(119, 119, 119, 0.829);
 `;
@@ -111,8 +112,8 @@ const Checkbox = styled.input`
     height: 17px;
 `;
 
-const CreateStyled = {
-    CreateWrapper,
+const EditStyled = {
+    EditWrapper,
     Header,
     MainPage,
     RecipeBlock,
@@ -125,4 +126,4 @@ const CreateStyled = {
     Checkbox,
 }
 
-export default CreateStyled;
+export default EditStyled;
