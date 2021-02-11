@@ -47,7 +47,11 @@ const api = {
   recipe: {
     createRecipe: (data) => axiosInstance.post(`/recipe`, data),
 
-    fetchRecipes: () => axiosInstance.get(`/recipe`),
+    fetchRecipes: () => axiosInstance.get(`/recipe`, {
+      params: {
+        category: false,
+      }
+    }),
 
     editRecipe: (id, data) => axiosInstance.put(`/recipe/${id}`, data),
 

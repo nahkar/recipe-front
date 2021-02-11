@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import moment from 'moment';
 
-import { getRecipes, deleteRecipe, editRecipe } from './../../../../store/recipe/actions';
+import { getRecipes, deleteRecipe } from './../../../../store/recipe/actions';
 import Loader from '../../../Loader';
 import routes from '../../../../constants/routes';
 
@@ -20,8 +20,6 @@ const RecipeList = ({history}) => {
         isLoading: state.recipe.isLoading,
     }));
 
-    console.log('RECIPE LIST', recipes);
-
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -37,7 +35,6 @@ const RecipeList = ({history}) => {
 
     const editCurrentRecipe = (id) => {
         history.push(`${routes.recipeEdit}/${id}`)
-        console.log(id);
     }
 
     return (

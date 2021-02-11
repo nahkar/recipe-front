@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-import queryString from 'query-string';
+import { useSelector } from 'react-redux';
+// import queryString from 'query-string';
 
 import { useForm, Controller } from 'react-hook-form';
 import { Multiselect } from 'multiselect-react-dropdown';
-
-import { getCategories } from './../../../../../../store/category/actions';
 
 import EditStyled from './styled';
 
@@ -18,7 +16,7 @@ const EditRecipe = (props) => {
         category: state.category.category,
         recipes: state.recipe.recipes,
     }));
-
+    
     // const { id } = queryString.parse(history.location.search)
     const { id } = props.match.params;
 
@@ -27,22 +25,17 @@ const EditRecipe = (props) => {
     useEffect(() => {
         const selectedRecipe = recipes.find(recipe => recipe.id === +id);
         setRecipe(selectedRecipe);        
-    }, []);
+    }, [id, recipes]);
 
     useEffect(() => {
         if(receipe) {
             setValue('title', receipe.title);
             setValue('description', receipe.body);
         }
-    }, [receipe]);
+    }, [receipe, setValue]);
 
     const onSubmit = (data) => {
-        // const dataRecipe = {
-        //     userId: String(userId),
-        //     title: data.title,
-        //     body: data.description,
-        //     categoryIds: data.multiselect.map(item => item.id),
-        // }
+        console.log(data);
     }
 
     return (
@@ -75,13 +68,14 @@ const EditRecipe = (props) => {
                             control={control}
                             name="multiselect"
                             render={((
-                                { onChange }
+                                { onChange, value }
                             ) => (
                             <Multiselect
                             options={category} 
                             displayValue='title' 
                             placeholder="Select category"
                             onSelect={onChange}
+                            selectedValues={[{id: 5, title: "coffe"}]}
                             />
                             ))}
                         />

@@ -15,7 +15,7 @@ const CreateWrapper = styled.div`
 `;
 
 const Header = styled.div`
-    width: 1000px;
+    width: 50%;
     border: 1px solid grey;
     min-height: 70px;
     background-color: #fff;
@@ -41,7 +41,7 @@ const Header = styled.div`
 `;
 
 const MainPage = styled.div`
-    width: 1000px;
+    width: 50%;
     display: flex;
     justify-content: space-between;
 `;

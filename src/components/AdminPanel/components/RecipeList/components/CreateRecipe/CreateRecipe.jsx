@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
@@ -35,8 +35,7 @@ const CreateRecipe = ({history}) => {
         }
 
         generateRecipe(dataRecipe, history);
-        // history.push(routes.recipes);
-        // console.log(dataRecipe);
+        history.push(routes.recipes);
     }
 
     const { register, handleSubmit, control } = useForm();

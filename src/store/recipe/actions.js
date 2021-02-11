@@ -18,7 +18,6 @@ import api from '../../utils/api';
 import routes from './../../constants/routes';
 
 const recipeRequest = () => ({
-  type: CREATE_RECIPE_REQUEST,
   type: RECIPE_REQUEST,
 });
 
@@ -27,13 +26,20 @@ const recipeSuccess = (payload) => ({
   payload,
 });
 
+const recipeError = () => ({
+  type: RECIPE_ERROR,
+});
+
+const createRecipeRequest = () => ({
+  type: CREATE_RECIPE_REQUEST,
+});
+
 const createRecipeSuccess = () => ({
   type: CREATE_RECIPE_SUCCESS,
-})
+});
 
-const recipeError = () => ({
+const createRecipeError = () => ({
   type: CREATE_RECIPE_ERROR,
-  type: RECIPE_ERROR,
 });
 
 const deleteRecipeRequest = () => ({
@@ -73,7 +79,7 @@ export const getRecipes = () => (dispatch) => {
 };
 
 export const createRecipe = (data, history) => (dispatch) => {
-  dispatch(recipeRequest());
+  dispatch(createRecipeRequest());
   return api.recipe
     .createRecipe(data)
     .then(() => {
@@ -81,7 +87,7 @@ export const createRecipe = (data, history) => (dispatch) => {
       history.push(routes.recipes);
     })
     .catch((err) => {
-      dispatch(recipeError());
+      dispatch(createRecipeError());
     });
 };
 
