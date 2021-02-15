@@ -33,7 +33,6 @@ const CreateRecipe = ({history}) => {
             body: data.description,
             categoryIds: data.multiselect.map(item => item.id),
         }
-
         generateRecipe(dataRecipe, history);
         history.push(routes.recipes);
     }

@@ -20,6 +20,7 @@ const RecipeList = ({history}) => {
         isLoading: state.recipe.isLoading,
     }));
 
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -55,6 +56,7 @@ const RecipeList = ({history}) => {
                     </RecipeStyled.Header>
 
                 {recipes.map((recipe, index ) => {
+                    console.log(recipe);
                     return (
                         <RecipeStyled.List key={ recipe.id }>
                             <RecipeStyled.Content>{ index+1 }</RecipeStyled.Content>
@@ -63,7 +65,17 @@ const RecipeList = ({history}) => {
                                 <RecipeStyled.UserName>{ recipe.title}</RecipeStyled.UserName>
                             </RecipeStyled.ContentName>
 
-                            <RecipeStyled.Content>{ recipe.categories }</RecipeStyled.Content>
+                          <RecipeStyled.Content>
+                          {
+                              recipe.categories.map((category, i) => {                
+                                  if(i < recipe.categories.length -1){
+                                    return <span key={recipe.id+1}>{ category.title }, </span> 
+                                  }
+                                  return <span key={recipe.id+2}>{ category.title } </span> 
+                              })
+                          }
+                          </RecipeStyled.Content>
+                          
                             <RecipeStyled.Content>{ moment(recipe.createdAt).format('DD/MM/YYYY') }</RecipeStyled.Content>
                             <RecipeStyled.Content>
                                 <Button title="Edit" color="#24d133" onClick={() => editCurrentRecipe(recipe.id)}/>

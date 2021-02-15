@@ -13,10 +13,15 @@ import {
   EDIT_RECIPE_REQUEST,
   EDIT_RECIPE_SUCCESS,
   EDIT_RECIPE_ERROR,
+  GET_CURRENT_RECIPE_REQUEST,
+  GET_CURRENT_RECIPE_SUCCESS,
+  GET_CURRENT_RECIPE_ERROR,
+  CLEAR_SINGLE_RECIPE,
  } from './constants';
 
 const initialState = {
   recipes: [],
+  singleRecipe: {},
 };
 
 const recipeReducer = (state = initialState, action) => {
@@ -25,6 +30,7 @@ const recipeReducer = (state = initialState, action) => {
   switch (type) {
 
     case RECIPE_REQUEST:
+    case GET_CURRENT_RECIPE_REQUEST:
     case CREATE_RECIPE_REQUEST:
     case DELETE_RECIPE_REQUEST:
     case EDIT_RECIPE_REQUEST:
@@ -34,6 +40,20 @@ const recipeReducer = (state = initialState, action) => {
       };
 
     case RECIPE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        recipes: payload,
+      };
+
+    case GET_CURRENT_RECIPE_SUCCESS:
+    return {
+      ...state,
+      isLoading: false,
+      singleRecipe: payload,
+    };
+
+
     case EDIT_RECIPE_SUCCESS:
       return {
         ...state,
@@ -49,12 +69,18 @@ const recipeReducer = (state = initialState, action) => {
       }
 
     case RECIPE_ERROR:
+    case GET_CURRENT_RECIPE_ERROR:
     case CREATE_RECIPE_ERROR:
     case DELETE_RECIPE_ERROR:
     case EDIT_RECIPE_ERROR:
       return {
         ...state,
         isLoading: false,
+      };
+      case CLEAR_SINGLE_RECIPE:
+      return {
+        ...state,
+        singleRecipe: {},
       };
     default:
       return {

@@ -49,7 +49,13 @@ const api = {
 
     fetchRecipes: () => axiosInstance.get(`/recipe`, {
       params: {
-        category: false,
+        category: true,
+      }
+    }),
+
+    getCurrentRecipe: (id) => axiosInstance.get(`/recipe/${id}`, {
+      params: {
+        category: true,
       }
     }),
 

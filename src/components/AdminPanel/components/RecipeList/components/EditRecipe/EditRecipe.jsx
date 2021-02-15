@@ -1,45 +1,87 @@
 import React, { useEffect, useState } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 // import queryString from 'query-string';
 
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { Multiselect } from 'multiselect-react-dropdown';
+
+import { getCurrentRecipe, clearSingleRecipe, editRecipe } from './../../../../../../store/recipe/actions';
+import { getCategories } from '../../../../../../store/category/actions';
 
 import EditStyled from './styled';
 
 const EditRecipe = (props) => { 
 
-    const [receipe, setRecipe] = useState(null);
+    const dispatch = useDispatch();
 
-    const { category, recipes  } = useSelector(state => ({
+    const generateRecipe = (id, data) => dispatch(editRecipe(id, data));
+
+    const { category, singleRecipe, userId  } = useSelector(state => ({
         category: state.category.category,
-        recipes: state.recipe.recipes,
+        singleRecipe: state.recipe.singleRecipe,
+        userId: state.user.userId,
     }));
+
+    const [selectedValues, setSelectedValues] = useState([]);
+
+    useEffect(() => {
+        if(singleRecipe.categories){
+            setSelectedValues([...singleRecipe.categories])
+        }
+    }, [singleRecipe.categories])
+
+    const multiSelectHandler = (data) => {
+        setSelectedValues([...data])
+    };
+
+    const multiSelectRemoveHandler = (data) => {
+        setSelectedValues([...data])
+    }
     
     // const { id } = queryString.parse(history.location.search)
     const { id } = props.match.params;
 
-    const { register, handleSubmit, control, setValue } = useForm();
+    const { register, handleSubmit, setValue } = useForm();
+    // const getRecipe = (id) => dispatch(getCurrentRecipe(id));
 
     useEffect(() => {
-        const selectedRecipe = recipes.find(recipe => recipe.id === +id);
-        setRecipe(selectedRecipe);        
-    }, [id, recipes]);
+        const getRecipe = (id) => dispatch(getCurrentRecipe(id));
+        const getCategory = () => dispatch(getCategories());
+        getCategory();
+
+        getRecipe(id);
+
+        return () => {
+            console.log('UNMOUNT');
+            dispatch(clearSingleRecipe())
+        };
+    }, [dispatch, id]);  
 
     useEffect(() => {
-        if(receipe) {
-            setValue('title', receipe.title);
-            setValue('description', receipe.body);
+        if(singleRecipe) {
+            setValue('title', singleRecipe.title);
+            setValue('description', singleRecipe.body);
         }
-    }, [receipe, setValue]);
+    }, [singleRecipe, setValue]);
 
     const onSubmit = (data) => {
-        console.log(data);
-    }
 
+        const dataRecipe = {
+            userId: String(userId),
+            title: data.title,
+            body: data.description,
+            categoryIds: selectedValues.map(category => category.id)
+        }
+        console.log('dataRecipe', dataRecipe);
+        generateRecipe(id, dataRecipe);
+        // history.push(routes.recipes);
+    }
+ 
     return (
-        <EditStyled.EditWrapper>
+       
+           (singleRecipe.id && category.length) ? <>
+            <EditStyled.EditWrapper>
             <EditStyled.Header>
                 <p>Edit Your Recipe</p>
             </EditStyled.Header>
@@ -64,21 +106,16 @@ const EditRecipe = (props) => {
                             ref={register({required: true})}/>
 
                         <EditStyled.Label>Add category</EditStyled.Label>
-                        <Controller
-                            control={control}
-                            name="multiselect"
-                            render={((
-                                { onChange, value }
-                            ) => (
-                            <Multiselect
+                        <Multiselect
+                            ref={register({required: true})}
                             options={category} 
                             displayValue='title' 
                             placeholder="Select category"
-                            onSelect={onChange}
-                            selectedValues={[{id: 5, title: "coffe"}]}
+                            onSelect={ multiSelectHandler }
+                            onRemove={multiSelectRemoveHandler}
+                            selectedValues={selectedValues}
                             />
-                            ))}
-                        />
+
                         <EditStyled.Label>Write steps to prepare your dish</EditStyled.Label>
                         <EditStyled.RecipeDescription rows="5" name="description" ref={register({required: true})}/>
 
@@ -87,7 +124,8 @@ const EditRecipe = (props) => {
                    
                 </EditStyled.RecipeBlock>
             </EditStyled.MainPage>
-        </EditStyled.EditWrapper>
+        </EditStyled.EditWrapper></>: <p>Loading ....</p>
+       
     )
 }
 
