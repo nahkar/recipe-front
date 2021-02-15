@@ -141,8 +141,8 @@ export const editRecipe = (id, data) => (dispatch) => {
   dispatch(editRecipeRequest());
   return api.recipe
     .editRecipe(id, data)
-    .then((response) => {
-      dispatch(editRecipeSuccess(response));
+    .then(() => {
+      dispatch(editRecipeSuccess());
     })
     .catch((err) => {
       dispatch(editRecipeError());
