@@ -11,6 +11,10 @@ import {
   EDIT_RECIPE_REQUEST,
   EDIT_RECIPE_SUCCESS,
   EDIT_RECIPE_ERROR,
+  GET_CURRENT_RECIPE_REQUEST,
+  GET_CURRENT_RECIPE_SUCCESS,
+  GET_CURRENT_RECIPE_ERROR,
+  CLEAR_SINGLE_RECIPE,
 } from './constants';
 
 import api from '../../utils/api';
@@ -28,6 +32,19 @@ const recipeSuccess = (payload) => ({
 
 const recipeError = () => ({
   type: RECIPE_ERROR,
+});
+
+const getCurrentRecipeRequest = () => ({
+  type: GET_CURRENT_RECIPE_REQUEST
+});
+
+const getCurrentRecipeSuccess = (payload) => ({
+  type: GET_CURRENT_RECIPE_SUCCESS,
+  payload: payload,
+});
+
+const getCurrentRecipeError = () => ({
+  type: GET_CURRENT_RECIPE_ERROR
 });
 
 const createRecipeRequest = () => ({
@@ -66,6 +83,10 @@ const editRecipeError = () => ({
   type: EDIT_RECIPE_ERROR,
 });
 
+export const clearSingleRecipe = () => ({
+  type: CLEAR_SINGLE_RECIPE,
+});
+
 export const getRecipes = () => (dispatch) => {
   dispatch(recipeRequest());
   return api.recipe
@@ -75,6 +96,18 @@ export const getRecipes = () => (dispatch) => {
     })
     .catch((err) => {
       dispatch(recipeError());
+    });
+};
+
+export const getCurrentRecipe = (id) => (dispatch) => {
+  dispatch(getCurrentRecipeRequest());
+  return api.recipe
+    .getCurrentRecipe(id)
+    .then((response) => {
+      dispatch(getCurrentRecipeSuccess(response.data));
+    })
+    .catch((err) => {
+      dispatch(getCurrentRecipeError());
     });
 };
 
@@ -108,9 +141,8 @@ export const editRecipe = (id, data) => (dispatch) => {
   dispatch(editRecipeRequest());
   return api.recipe
     .editRecipe(id, data)
-    .then(() => {
-      dispatch(editRecipeSuccess());
-      dispatch(getRecipes());
+    .then((response) => {
+      dispatch(editRecipeSuccess(response));
     })
     .catch((err) => {
       dispatch(editRecipeError());
