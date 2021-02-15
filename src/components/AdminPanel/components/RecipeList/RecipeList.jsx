@@ -69,9 +69,9 @@ const RecipeList = ({history}) => {
                           {
                               recipe.categories.map((category, i) => {                
                                   if(i < recipe.categories.length -1){
-                                    return <span>{ category.title }, </span> 
+                                    return <span key={recipe.id+1}>{ category.title }, </span> 
                                   }
-                                  return <span>{ category.title } </span> 
+                                  return <span key={recipe.id+2}>{ category.title } </span> 
                               })
                           }
                           </RecipeStyled.Content>

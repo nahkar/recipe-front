@@ -3,19 +3,15 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // import queryString from 'query-string';
 
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { Multiselect } from 'multiselect-react-dropdown';
 
 import { getCurrentRecipe, clearSingleRecipe, editRecipe } from './../../../../../../store/recipe/actions';
 import { getCategories } from '../../../../../../store/category/actions';
-import routes from './../../../../../../constants/routes';
 
 import EditStyled from './styled';
 
-const EditRecipe = (props, history) => { 
-
-    const [recipe, setRecipe] = useState(null);
-    const [categoryCurrent, setCategory] = useState(null);
+const EditRecipe = (props) => { 
 
     const dispatch = useDispatch();
 
@@ -46,11 +42,11 @@ const EditRecipe = (props, history) => {
     // const { id } = queryString.parse(history.location.search)
     const { id } = props.match.params;
 
-    const { register, handleSubmit, control, setValue } = useForm();
-    const getRecipe = (id) => dispatch(getCurrentRecipe(id));
+    const { register, handleSubmit, setValue } = useForm();
+    // const getRecipe = (id) => dispatch(getCurrentRecipe(id));
 
     useEffect(() => {
-
+        const getRecipe = (id) => dispatch(getCurrentRecipe(id));
         const getCategory = () => dispatch(getCategories());
         getCategory();
 
@@ -60,14 +56,14 @@ const EditRecipe = (props, history) => {
             console.log('UNMOUNT');
             dispatch(clearSingleRecipe())
         };
-    }, []);  
+    }, [dispatch, id]);  
 
     useEffect(() => {
         if(singleRecipe) {
             setValue('title', singleRecipe.title);
             setValue('description', singleRecipe.body);
         }
-    }, [singleRecipe]);
+    }, [singleRecipe, setValue]);
 
     const onSubmit = (data) => {
 
